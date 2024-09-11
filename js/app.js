@@ -220,11 +220,11 @@ document.getElementById('go-shop-btn').addEventListener('click', () => {
     document.querySelectorAll('.tabs-content').forEach(content => content.classList.remove('tab-active'));
 
     // muestra el contenido de las gorras
-    const gorrasContent = document.getElementById('gorras-content');
+    const gorrasContent = document.getElementById('Productos');
     gorrasContent.classList.add('tab-active');
 
     // desplaza la página hasta la sección de Productos populares
-    const productosPopularesSection = document.getElementById('productos-populares');
+    const productosPopularesSection = document.getElementById('Productos');
     productosPopularesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // ajustar el desplazamiento un poco hacia arriba, mueva el 25 y 500 segun su necidad porque creo que esa cosa con pantalla grande o chica se nos va a joder :V
@@ -232,3 +232,114 @@ document.getElementById('go-shop-btn').addEventListener('click', () => {
         window.scrollBy(0, 25); // Con esta vuelta, el 25, se cuadro para que quedara  y se viera el productos populares y se vea las gorras y arriba pa que no se oculte esa chimbada
     }, 500); // y esta cosa trabaja de la mano con la de arriba
 });
+
+
+
+// Escucha los clics en las categorías
+document.getElementById('clásicas').addEventListener('click', function(e) {
+    e.preventDefault();
+    activateTab('tab-clasicas');
+});
+
+document.getElementById('exclusivas').addEventListener('click', function(e) {
+    e.preventDefault();
+    activateTab('tab-exclusivas');
+});
+
+document.getElementById('limitada').addEventListener('click', function(e) {
+    e.preventDefault();
+    activateTab('tab-limitada');
+});
+
+document.getElementById('accesorios').addEventListener('click', function(e) {
+    e.preventDefault();
+    activateTab('tab-accesorios');
+});
+
+
+
+// Función para activar la pestaña
+function activateTab(tabId) {
+    // Desactivar todas las pestañas
+    const tabs = document.querySelectorAll('.hm-tab-link');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    // Activar la pestaña seleccionada
+    document.getElementById(tabId).classList.add('active');
+
+    // Opción: Desplaza la página a la sección de productos
+    const productosSection = document.querySelector('.hm-tabs');
+    productosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+
+
+
+
+
+
+// Función para ocultar todas las secciones de productos
+function ocultarSecciones() {
+    document.getElementById('Productos').style.display = 'none'; // Oculta Clásicas
+    document.getElementById('productos-exclusivas').style.display = 'none'; // Oculta Exclusivas
+    document.getElementById('productos-limitada').style.display = 'none'; // Oculta Edición Limitada
+    document.getElementById('productos-accesorios').style.display = 'none'; // Oculta Accesorios
+}
+
+// Función para mostrar la sección seleccionada
+function mostrarSeccion(id) {
+    ocultarSecciones(); // Oculta todas las secciones
+    document.getElementById(id).style.display = 'block'; // Muestra la sección seleccionada
+}
+
+// Asignar eventos de clic a las categorías
+
+// Para pestaña Clásicas
+document.getElementById('tab-clasicas').addEventListener('click', function() {
+    mostrarSeccion('Productos'); // Muestra la sección de Clásicas
+});
+
+// Para pestaña Exclusivas
+document.getElementById('tab-exclusivas').addEventListener('click', function() {
+    mostrarSeccion('productos-exclusivas'); // Muestra la sección de Exclusivas
+});
+
+// Para pestaña Edición Limitada
+document.getElementById('tab-limitada').addEventListener('click', function() {
+    mostrarSeccion('productos-limitada'); // Muestra la sección de Edición Limitada
+});
+
+// Para pestaña Accesorios
+document.getElementById('tab-accesorios').addEventListener('click', function() {
+    mostrarSeccion('productos-accesorios'); // Muestra la sección de Accesorios
+});
+
+// Asignar eventos de clic a las categorías (imágenes)
+
+// Para Clásicas (imagen)
+document.getElementById('clásicas').addEventListener('click', function() {
+    mostrarSeccion('Productos'); // Muestra la sección de Clásicas
+    document.getElementById('tab-clasicas').click(); // Simula el clic en la pestaña de "Clásicas"
+});
+
+// Para Exclusivas (imagen)
+document.getElementById('exclusivas').addEventListener('click', function() {
+    mostrarSeccion('productos-exclusivas'); // Muestra la sección de Exclusivas
+    document.getElementById('tab-exclusivas').click(); // Simula el clic en la pestaña de "Exclusivas"
+});
+
+// Para Edición Limitada (imagen)
+document.getElementById('limitada').addEventListener('click', function() {
+    mostrarSeccion('productos-limitada'); // Muestra la sección de Edición Limitada
+    document.getElementById('tab-limitada').click(); // Simula el clic en la pestaña de "Edición Limitada"
+});
+
+// Para Accesorios (imagen)
+document.getElementById('accesorios').addEventListener('click', function() {
+    mostrarSeccion('productos-accesorios'); // Muestra la sección de Accesorios
+    document.getElementById('tab-accesorios').click(); // Simula el clic en la pestaña de "Accesorios"
+});
+
+// Por defecto, mostrar la sección de Clásicas al cargar la página
+mostrarSeccion('Productos');

@@ -64,10 +64,10 @@
 
                     <nav class="hm-menu">
                         <ul>
-                            <li><a href="#Categorias">Categorías</a></li>
-                            <li><a href="#Productos">Productos</a></li>
                             <li><a href="#Nosotros">Nosotros</a></li>
-                            <li><a href="#Contacto">Contacto</a></li>
+                            <li><a href="#Categorias">Categorías</a></li>
+                            <li><a href="#productos-populares">Productos</a></li>
+                            <li><a href="#Contáctanos">Contáctanos</a></li>
                         </ul>
 
                         <div class="hm-icon-cart">
@@ -97,7 +97,7 @@
                 <li><a href="#Categorias">Categorías</a></li>
                 <li><a href="#Productos">Productos</a></li>
                 <li><a href="#Nosotros">Nosotros</a></li>
-                <li><a href="#Contacto">Contacto</a></li>
+                <li><a href="#Contáctanos">Contáctanos</a></li>
             </ul>
         </div>
 
@@ -112,59 +112,95 @@
             <a href=""></a>
         </div>
 
+
+
+
+        <!--Aquí Inicia Nosotros-->
+
+        <!-- =================================
+        SECCIÓN NOSOTROS
+        ================================== -->
+        <!-- =================================
+        SECCIÓN NOSOTROS
+        ================================== -->
+        <div class="hm-page-block" id="Nosotros">
+            <div class="container">
+                <!-- Título de la sección -->
+                <div class="header-title">
+                    <h1 data-aos="fade-up" data-aos-duration="3000">Nosotros</h1>
+                </div>
+
+                <div class="imagen-nosotros" data-aos="fade-up" data-aos-duration="1500">
+                    <img src="img/nosotros.jpeg" alt="">
+                    
+                </div>
+
+                <!-- Contenido de texto solamente -->
+                <div class="about-text" data-aos="fade-up" data-aos-duration="1500">
+                    <p>
+                        Captured Styles es una marca que nace con la idea de ofrecer productos exclusivos y de alta calidad para quienes buscan destacar su estilo.<br> 
+                        Con un enfoque en la moda urbana, nuestros productos están diseñados para personas que buscan algo único y auténtico.
+                    </p>
+                    <p>
+                        Chinacota es cacorro
+                    </p>
+                    <p>
+                        Nuestro compromiso es proporcionar no solo productos de calidad, sino también una experiencia de compra única y personalizada.<br> 
+                        Cada detalle cuenta para nosotros, desde la selección de materiales hasta el servicio al cliente.
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
         <!-- =================================
            HOME CATEGROIAS
         ================================== -->
         
+        <!-- Categorías -->
         <div class="hm-page-block" id="Categorias">
-            <div class="container">   
+            <div class="container">
                 <div class="header-title">
-                    <h1  data-aos="fade-up" data-aos-duration="3000">Categorías</h1>
+                    <h1 data-aos="fade-up" data-aos-duration="3000">Categorías</h1>
                 </div>
-
                 <div class="hm-grid-category">
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="#">
-                            <img src="img/Exclusivas página.jpeg" alt="">
-                            <div class="c-info">
-                                <h3>Exclusivas</h3>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1500">
-                        <a href="#">
+                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1500" id="clásicas">
+                        <a href="javascript:void(0);" id="link-clasicas">
                             <img src="img/Clásicas página.jpeg" alt="">
                             <div class="c-info">
                                 <h3>Clásicas</h3>
                             </div>
                         </a>
                     </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                        <a href="#">
+                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1500" id="exclusivas">
+                        <a href="javascript:void(0);" id="link-exclusivas">
+                            <img src="img/Exclusivas página.jpeg" alt="">
+                            <div class="c-info">
+                                <h3>Exclusivas</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000" id="limitada">
+                        <a href="javascript:void(0);" id="link-limitada">
                             <img src="img/Edition One.jpeg" alt="">
                             <div class="c-info">
                                 <h3>Edición Limitada</h3>
                             </div>
                         </a>
                     </div>
-
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                        <a href="#">
+                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000" id="accesorios">
+                        <a href="javascript:void(0);" id="link-accesorios">
                             <img src="img/Ski Mask Página.jpeg" alt="">
                             <div class="c-info">
                                 <h3>Accesorios</h3>
                             </div>
                         </a>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
          <!-- =================================
            HOME PRODUCTOS DESTACADOS
         ================================== -->
@@ -178,24 +214,24 @@
 
                 <!-- TABS ESTA ES LA SECCION DE LOS PRODUCTOS -->
                 <ul class="hm-tabs" data-aos="fade-up">
-                    <li class="hm-tab-link" id="gorras-tab">
-                        Gorras
+                    <li class="hm-tab-link" id="tab-clasicas">
+                        Clásicas
                     </li>
-                    <li class="hm-tab-link">
-                        Exclusive
+                    <li class="hm-tab-link" id="tab-exclusivas">
+                        Exclusivas
                     </li>
-                    <li class="hm-tab-link">
+                    <li class="hm-tab-link" id="tab-limitada">
+                        Edición Limitada
+                    </li>
+                    <li class="hm-tab-link" id="tab-accesorios">
                         Accesorios
-                    </li>
-                    <li class="hm-tab-link">
-                        En oferta
                     </li>
                 </ul>
                 
 
                 <!-- CONTENIDO DE LOS TABS -->
-                <!-- Gorras -->
-                <div class="tabs-content" id="gorras-content" data-aos="fade-up">
+                <!-- Clásicas -->
+                <div class="tabs-content" id="Productos" data-aos="fade-up">
 
                     <div class="grid-product">
 
@@ -273,8 +309,8 @@
 
                 </div>
 
-                <!-- Exclusive -->
-                <div class="tabs-content" data-aos="fade-up">
+                <!-- Exclusivas -->
+                <div class="tabs-content" id="productos-exclusivas" data-aos="fade-up">
 
                     <div class="grid-product">
 
@@ -352,8 +388,8 @@
 
                 </div>
 
-                <!-- Accesorios -->
-                <div class="tabs-content" data-aos="fade-up">
+                <!-- Edición Limitada -->
+                <div class="tabs-content" id="productos-limitada" data-aos="fade-up">
 
                     <div class="grid-product">
 
@@ -430,8 +466,8 @@
 
                 </div>
 
-                <!-- En oferta -->
-                <div class="tabs-content" data-aos="fade-up">
+                <!-- Accesorios -->
+                <div class="tabs-content" id="productos-accesorios" data-aos="fade-up">
 
                     <div class="grid-product">
 
@@ -521,11 +557,11 @@
         </div>
 
         <!--===== Contáctanos =====-->
-          <div class="left">
+          <div class="left" >
             Déjanos tus datos 
         </div>
         
-        <div class="right">
+        <div class="right" id="Contáctanos">
             <form action="/submit_form" method="post">
                 <label for="name">Nombre *</label><br>
                 <input type="text" id="name" name="name" required><br><br>
@@ -576,7 +612,7 @@
                            <li><a href="#">Categorías</a></li>
                            <li><a href="#">Productos</a></li>
                            <li><a href="#">Nosotros</a></li>
-                           <li><a href="#">Contacto</a></li>
+                           <li><a href="#">Contáctanos</a></li>
                         </ul>
                     </div>
 
@@ -585,7 +621,6 @@
             </div>
 
         </footer>
-        <a href="sad"></a>
 
         <div class="foo-copy">
             <div class="container">
