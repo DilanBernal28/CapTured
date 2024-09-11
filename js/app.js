@@ -343,3 +343,80 @@ document.getElementById('accesorios').addEventListener('click', function() {
 
 // Por defecto, mostrar la sección de Clásicas al cargar la página
 mostrarSeccion('Productos');
+
+
+
+
+
+
+// Función para abrir el modal con la imagen
+function openModal(imageSrc) {
+    var modal = document.getElementById('imageModal');
+    var modalImage = document.getElementById('modalImage');
+
+    var zoomContainer = document.querySelector('.zoom-container');
+    
+    modal.style.display = 'block';
+    modalImage.src = imageSrc;
+
+    // Añadir eventos de zoom y desplazamiento
+    modalImage.addEventListener('mousemove', scrollImage); // Desplazar según el mouse
+    modalImage.addEventListener('mouseleave', resetZoom);  // Restablecer zoom al salir
+}
+
+// Función para cerrar el modal
+function closeModal() {
+    var modal = document.getElementById('imageModal');
+    var modalImage = document.getElementById('modalImage');
+    
+    modal.style.display = 'none';
+
+    // Remover eventos de zoom y desplazamiento al cerrar
+    modalImage.removeEventListener('mousemove', scrollImage);
+    modalImage.removeEventListener('mouseleave', resetZoom);
+}
+
+// Función para hacer zoom
+function zoomImage(event) {
+    var modalImage = event.target;
+    var zoomLevel = 2; // Nivel de zoom (2x)
+    var x = (event.offsetX / modalImage.offsetWidth) * 100;
+    var y = (event.offsetY / modalImage.offsetHeight) * 100;
+    
+    modalImage.style.transformOrigin = x + "% " + y + "%";
+    modalImage.style.transform = "scale(" + zoomLevel + ")";
+    modalImage.style.cursor = "zoom-out";
+}
+
+// Función para restablecer el zoom
+function resetZoom(event) {
+    var modalImage = event.target;
+    modalImage.style.transform = "scale(1)";
+    modalImage.style.cursor = "zoom-in";
+}
+
+// Función para desplazar la imagen automáticamente
+function scrollImage(event) {
+    var modalImage = event.target;
+    var zoomContainer = document.querySelector('.zoom-container');
+    
+    var containerRect = zoomContainer.getBoundingClientRect(); // Tamaño del contenedor
+    var imageRect = modalImage.getBoundingClientRect();        // Tamaño de la imagen
+    
+    var offsetX = event.clientX - containerRect.left; // Posición del mouse en X
+    var offsetY = event.clientY - containerRect.top;  // Posición del mouse en Y
+
+    var percentageX = offsetX / containerRect.width;  // Posición en porcentaje X
+    var percentageY = offsetY / containerRect.height; // Posición en porcentaje Y
+
+    // Calcular el desplazamiento
+    var scrollLeft = (imageRect.width - containerRect.width) * percentageX;
+    var scrollTop = (imageRect.height - containerRect.height) * percentageY;
+
+    // Desplazar el contenedor
+    zoomContainer.scrollLeft = scrollLeft;
+    zoomContainer.scrollTop = scrollTop;
+}
+
+
+

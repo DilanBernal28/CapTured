@@ -182,14 +182,6 @@
                             </div>
                         </a>
                     </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000" id="limitada">
-                        <a href="javascript:void(0);" id="link-limitada">
-                            <img src="img/Edition One.jpeg" alt="">
-                            <div class="c-info">
-                                <h3>Edición Limitada</h3>
-                            </div>
-                        </a>
-                    </div>
                     <div class="grid-item" data-aos="fade-up" data-aos-duration="2000" id="accesorios">
                         <a href="javascript:void(0);" id="link-accesorios">
                             <img src="img/Ski Mask Página.jpeg" alt="">
@@ -198,6 +190,15 @@
                             </div>
                         </a>
                     </div>
+                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000" id="limitada">
+                        <a href="javascript:void(0);" id="link-limitada">
+                            <img src="img/Edition One.jpeg" alt="">
+                            <div class="c-info">
+                                <h3>Edición Limitada</h3>
+                            </div>
+                        </a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -220,11 +221,11 @@
                     <li class="hm-tab-link" id="tab-exclusivas">
                         Exclusivas
                     </li>
-                    <li class="hm-tab-link" id="tab-limitada">
-                        Edición Limitada
-                    </li>
                     <li class="hm-tab-link" id="tab-accesorios">
                         Accesorios
+                    </li>
+                    <li class="hm-tab-link" id="tab-limitada">
+                        Edición Limitada
                     </li>
                 </ul>
                 
@@ -237,7 +238,7 @@
 
                         <div class="product-item">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="javascript:void(0);" onclick="openModal('img/Special 420.jpeg')">
                                     <img src="img/Special 420.jpeg" alt="">
                                 </a>
                                 <span class="stin stin-new">Nuevo</span>
@@ -250,12 +251,19 @@
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
+                            <!-- Modal para ver imagen en grande
+                            <div id="imageModal" class="modal">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div class="zoom-container">
+                                    <img class="modal-content" id="modalImage">
+                                </div>
+                            </div> -->
 
                         </div>
 
                         <div class="product-item">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="javascript:void(0);" onclick="openModal('img/Wfire.jpeg')">
                                     <img src="img/Wfire.jpeg" alt="">
                                 </a>
                             </div>
@@ -267,12 +275,11 @@
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
-
                         </div>
 
                         <div class="product-item">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="javascript:void(0);" onclick="openModal('img/Classic MLB.jpeg')">
                                     <img src="img/Classic MLB.jpeg" alt="">
                                 </a>
                             </div>
@@ -388,15 +395,15 @@
 
                 </div>
 
-                <!-- Edición Limitada -->
-                <div class="tabs-content" id="productos-limitada" data-aos="fade-up">
+                <!-- Accesorios -->
+                <div class="tabs-content" id="productos-accesorios" data-aos="fade-up">
 
                     <div class="grid-product">
 
                         <div class="product-item">
                             <div class="p-portada">
                                 <a href="">
-                                    <img src="img/Ski Mask Página.jpeg" alt="">
+                                    <img src="img/gorranegra.jpg" alt="">
                                 </a>
                                 <span class="stin stin-new">Nuevo</span>
                             </div>
@@ -466,15 +473,15 @@
 
                 </div>
 
-                <!-- Accesorios -->
-                <div class="tabs-content" id="productos-accesorios" data-aos="fade-up">
+                <!-- Edición Limitada -->
+                <div class="tabs-content" id="productos-limitada" data-aos="fade-up">
 
                     <div class="grid-product">
 
                         <div class="product-item">
                             <div class="p-portada">
                                 <a href="">
-                                    <img src="img/" alt="Producto">
+                                    <img src="img/gorranegra.jpg" alt="Producto">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
                             </div>
@@ -482,8 +489,8 @@
                             <div class="p-info">
                                <a href=""> <h3>Quisque vulputate aliquam</h3></a>
                                 <div class="precio">
-                                    <span>00.00</span>
-                                    <span class="thash">00.00</span>
+                                    <span>130.000</span>
+                                    <span class="thash">250.000</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
@@ -493,7 +500,7 @@
                         <div class="product-item">
                             <div class="p-portada">
                                 <a href="">
-                                    <img src="img/" alt="Producto">
+                                    <img src="img/gorranegraotra.jpg" alt="Producto">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
                             </div>
@@ -501,8 +508,8 @@
                             <div class="p-info">
                                <a href=""> <h3>Praesent nibh lorem, tempus quis est a</h3></a>
                                 <div class="precio">
-                                    <span>00.00</span>
-                                    <span class="thash">00.00</span>
+                                    <span>209.999</span>
+                                    <span class="thash">330.000</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
@@ -512,7 +519,7 @@
                         <div class="product-item">
                             <div class="p-portada">
                                 <a href="">
-                                    <img src="img/" alt="Producto">
+                                    <img src="img/gorranegra3.jpg" alt="Producto">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
                             </div>
@@ -520,9 +527,9 @@
                             <div class="p-info">
                                <a href=""> <h3>Nunc sit amet justo nec ipsum dolor.</h3></a>
                                 <div class="precio">
-                                    <span>00.00</span>
+                                    <span>300.000</span>
 
-                                    <span class="thash">00.00</span>
+                                    <span class="thash">400.000</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
@@ -532,7 +539,7 @@
                         <div class="product-item">
                             <div class="p-portada">
                                 <a href="">
-                                    <img src="img/" alt="Producto">
+                                    <img src="img/gorranegra4.jpg" alt="Producto">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
                             </div>
@@ -540,8 +547,8 @@
                             <div class="p-info">
                                <a href=""> <h3>Lorem ipsum dolor sit, amet consectetur</h3></a>
                                 <div class="precio">
-                                    <span>00.00</span>
-                                    <span class="thash">00.00</span>
+                                    <span>350.000</span>
+                                    <span class="thash">420.000</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase">AGREGAR AL CARRITO</a>
                             </div>
@@ -555,6 +562,19 @@
             </div>
 
         </div>
+
+
+         <!--------------------- Modal genérico para todas las imágenes---------------------------->
+         <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="zoom-container">
+                <img class="modal-content" id="modalImage">
+            </div>
+        </div>
+
+
+
+
 
         <!--===== Contáctanos =====-->
           <div class="left" >
@@ -577,12 +597,45 @@
         
                 <input type="checkbox" id="privacy" name="privacy" required><label for="privacy">Acepto la política de privacidad de datos *</label><br><br>
         
-                <input type="hidden" name="to" value="asul@asul-ti.com">
-                <input type="hidden" name="cc" value="luz.barrera@asul-ti.com">
+                <input type="hidden" name="to" value="capturedstylessas@gmail.com">
+                <input type="hidden" name="cc" value="fabismartinez867@gmail.com">
         
                 <input type="submit" value= "Enviar">
             </form>
         </div>
+
+
+               <!--===== Contáctanos =====-->
+               <!-- <div class="contact-section"> -->
+                <!-- Título encima del formulario -->
+                <!-- <div class="contact-title">
+                    <h2>Déjanos tus datos</h2>
+                </div> -->
+    
+                <!-- Formulario de contacto -->
+                <!-- <div class="contact-form" id="Contáctanos">
+                    <form action="/submit_form" method="post">
+                        <label for="name">Nombre *</label><br>
+                        <input type="text" id="name" name="name" required><br><br>
+    
+                        <label for="email">Correo electrónico *</label><br>
+                        <input type="email" id="email" name="email" required><br><br>
+    
+                        <label for="phone">Número de Teléfono *</label><br>
+                        <input type="tel" id="phone" name="phone" required><br><br>
+    
+                        <label for="message">¿Qué proyecto buscas?</label><br>
+                        <textarea id="message" name="message"></textarea><br><br>
+    
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">Acepto la política de privacidad de datos *</label><br><br>
+    
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+            </div> -->
+    
+
         
         <div class="clear"></div>
 
@@ -601,7 +654,7 @@
 
                             <div class="f-input">
                                 <input type="text" placeholder="Ingrese su correo">
-                                <button type="submit" class="hm-btn-round btn-primary"><i class="far fa-paper-plane"></i></button>
+                                <!-- <button type="submit" class="hm-btn-round btn-primary"><i class="far fa-paper-plane"></i></button> -->
                             </div>
                         </form>
 
