@@ -183,7 +183,7 @@ document.querySelectorAll('.hm-btn.btn-primary').forEach(button => {
 // Mostrar el carrito al hacer clic en el icono del carrito
 document.querySelector('.hm-icon-cart').addEventListener('click', () => {
     if (cart.length === 0) {
-        showAlert("Ole care chimba, va a comprar sin agregar al carrito nada ? awebado");
+        showAlert("Seleccione un producto antes de realizar la compra.");
     } else {
         cartOverlay.style.display = 'flex'; // Mostrar el carrito si hay productos
     }
