@@ -54,8 +54,27 @@
     margin: 10px 0; /* Añade espacio entre los párrafos */
 }
 
+#inicioSecion{
+    background-color: #4425AB;
+    display: flex;
+    padding: 4px;
+    vertical-align: middle;
+    align-items: center;
+    height: 50%;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
 
-
+#inicioSecion a{
+    color: #fff;
+    padding: 5px;
+}
+#inicioSecion:hover{
+    transform: scale(102%);
+    transition: 0.4s;
+    background-color: #0056b3;
+}
 
 
 body{
@@ -977,11 +996,6 @@ form {
     font-weight: bold;
     cursor: pointer;
 }
-
-
-
-
-
 
 
 .contact-section {

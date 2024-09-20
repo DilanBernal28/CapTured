@@ -187,3 +187,20 @@ body{
     color: #aaa;
     border-radius: 5px;
   }
+  .btnVolver span{
+    background: #000;
+    padding: 1.5%;
+    color: #fff;
+    font-size: 20px;
+    display: inline-flex;
+    border-radius: 35px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: #000 0 0 20px;
+    transition: 0.6s;
+  }
+  .btnVolver span:hover{
+    background-color: #aaa;
+    transition: 0.6s;
+    color: #000;
+  }
