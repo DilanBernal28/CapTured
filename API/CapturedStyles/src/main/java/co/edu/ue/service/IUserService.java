@@ -1,6 +1,7 @@
 package co.edu.ue.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import co.edu.ue.model.User;
 import co.edu.ue.model.User.Status;
@@ -12,7 +13,7 @@ public interface IUserService {
 	User statusUser(String username, User status);
 	List<User> allUser();
 	User getById(int id);
-	User getByUsername(String username);
+	Optional<User> getByUsername(String username);
 	List<User> getByStatus(Status status);
 	boolean existsByUsername(String username);
 	void deleteUser(int id);

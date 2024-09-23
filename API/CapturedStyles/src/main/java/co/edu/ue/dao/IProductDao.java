@@ -3,7 +3,7 @@ package co.edu.ue.dao;
 import java.util.List;
 
 import co.edu.ue.model.Product;
-import co.edu.ue.model.User.Status;
+import co.edu.ue.model.Product.Status;
 
 public interface IProductDao {
 	
@@ -11,6 +11,7 @@ public interface IProductDao {
 	Product updateProduct(Product product);
 	Product searchById(int id);
 	Product searchByName(String name);
+	List<Product> allProducts();
 	List<Product> searchByCategory(String category);
 	List<Product> searchAllByStatus(Status status);
 	List<Product> searchAllByName(String name);

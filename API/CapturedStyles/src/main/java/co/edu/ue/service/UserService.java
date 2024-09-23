@@ -1,6 +1,7 @@
 package co.edu.ue.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class UserService implements IUserService {
 	}
 	
 	@Override
-	public User getByUsername(String username) {
+	public Optional<User> getByUsername(String username) {
 		return dao.searchByUsername(username);
 	}
 	
@@ -48,7 +49,9 @@ public class UserService implements IUserService {
 	@Override
 	public User upUser(String usrnm, User newDataUser) {
 		//hace busqueda de el username para actualizar los campos
-			User existingDataUser = dao.searchByUsername(usrnm);
+			Optional<User> optionalUser = dao.searchByUsername(usrnm);
+			
+			User existingDataUser = optionalUser.get();
 			
 			existingDataUser.setUsrNombres(newDataUser.getUsrNombres());
 			existingDataUser.setUsrApellidos(newDataUser.getUsrApellidos());
@@ -61,16 +64,18 @@ public class UserService implements IUserService {
 	}
 	@Override
 	public User statusUser(String usrnm, User newDataUser) {
-		User existingDataUser = dao.searchByUsername(usrnm);
+		Optional<User> optionalUser = dao.searchByUsername(usrnm);
 		
-		existingDataUser.setUsrActive(newDataUser.getUsrActive());
+		User existingDataUser = optionalUser.get();
 		
 		return dao.updateUser(existingDataUser);
 	}
 	
 	@Override
 	public User upPasswordUser(String usrnm,User newPasswordUser) {
-		User existingDataUser = dao.searchByUsername(usrnm);
+		Optional<User> optionalUser = dao.searchByUsername(usrnm);
+		
+		User existingDataUser = optionalUser.get();
 		existingDataUser.setUsrPassword(newPasswordUser.getUsrPassword());
 		
 		return dao.updateUser(existingDataUser);

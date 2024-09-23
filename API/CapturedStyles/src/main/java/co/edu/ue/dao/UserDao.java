@@ -1,6 +1,7 @@
 package co.edu.ue.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,7 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public User searchByUsername(String username) {
+	public Optional<User> searchByUsername(String username) {
 		return jpa.findByUsrUsername(username);
 	}
 
@@ -57,7 +58,7 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public void deleteUser(int id) {
-		jpa.deleteById(id);;
+		jpa.deleteById(id);
 	}
 	
 

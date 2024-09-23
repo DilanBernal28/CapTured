@@ -1,6 +1,7 @@
 package co.edu.ue.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -56,29 +57,25 @@ public class UserController {
 	
 	//Trae un usuario por el username
 	@GetMapping(value = "user/nm/{usrnm}")
-	public ResponseEntity<User> getUserByUsername(@PathVariable("usrnm") String username){
+	public ResponseEntity<Optional<User>> getUserByUsername(@PathVariable("usrnm") String username){
 		if(service.existsByUsername(username)) {
-			return new ResponseEntity<User>(service.getByUsername(username),HttpStatus.ACCEPTED);
+			return new ResponseEntity<Optional<User>>(service.getByUsername(username),HttpStatus.ACCEPTED);
 		} else {
-			return new ResponseEntity<User>(service.getByUsername(username),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Optional<User>>(service.getByUsername(username),HttpStatus.NOT_FOUND);
 		}
 	}
 	//Trae todos los usuarios por el status
 	@GetMapping(value = "user/status/{status}")
 	public ResponseEntity<List<User>> getAllStatus(@PathVariable("status") Status status){
-		if(status ==null) {			
-			if(status == Status.activo || status == Status.baneado || status == Status.suspendido) {
-				List<User> datos = service.getByStatus(status);
-				try {
-					return new ResponseEntity<List<User>>(datos,HttpStatus.OK);
-				} catch (Exception e) {
-					return new ResponseEntity<List<User>>(HttpStatus.CONFLICT);
-				}
-			}else {
+		if(status == Status.activo || status == Status.baneado || status == Status.suspendido) {
+			List<User> datos = service.getByStatus(status);
+			try {
+				return new ResponseEntity<List<User>>(datos,HttpStatus.OK);
+			} catch (Exception e) {
 				return new ResponseEntity<List<User>>(HttpStatus.CONFLICT);
 			}
 		}else {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<List<User>>(HttpStatus.CONFLICT);
 		}
 	}
 	

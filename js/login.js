@@ -6,11 +6,19 @@ document.getElementById('login-box').addEventListener('submit', function(event) 
     getUser();
 });
 
+async function getToken(){
+    
+}
 async function getUser(){
     const usrUsername = document.getElementById('username').value;
     const usrPassword = document.getElementById('password').value;
 
-    const user = await fetch(url+'/nm/'+usrUsername).then(response => {
+    const user = await fetch(url+'/nm/'+usrUsername, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Basic ' + btoa('moder:1234')
+        }
+    }).then(response => {
         switch(response.status){
             case 202:
                 console.log("hola");

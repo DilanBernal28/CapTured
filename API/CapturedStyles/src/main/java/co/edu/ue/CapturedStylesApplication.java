@@ -17,5 +17,4 @@ public class CapturedStylesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CapturedStylesApplication.class, args);
 	}
-
 }

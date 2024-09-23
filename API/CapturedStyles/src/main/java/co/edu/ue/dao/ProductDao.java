@@ -1,14 +1,13 @@
 package co.edu.ue.dao;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.edu.ue.model.Product;
-import co.edu.ue.model.User.Status;
-
-import java.lang.Override;
-import java.util.List;
+import co.edu.ue.model.Product.Status;
 
 @Repository
 public class ProductDao implements IProductDao{
@@ -52,14 +51,16 @@ public class ProductDao implements IProductDao{
 
 	@Override
 	public Product updateProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		return jpa.save(product);
 	}
 
 	@Override
 	public void deleteProduct(int id) {
-		// TODO Auto-generated method stub
-		
+		jpa.deleteById(id);
 	}
 
+	@Override
+	public List<Product> allProducts() {
+		return jpa.findAll();
+	}
 }

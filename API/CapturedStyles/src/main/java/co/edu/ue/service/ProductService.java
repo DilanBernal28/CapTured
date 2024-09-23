@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.ue.dao.IProductDao;
 import co.edu.ue.model.Product;
-import co.edu.ue.model.User.Status;
+import co.edu.ue.model.Product.Status;
 
 @Service
 public class ProductService implements IProductService{
@@ -31,8 +31,7 @@ public class ProductService implements IProductService{
 	
 	@Override
 	public List<Product> getAllByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.searchAllByName(name);
 	}
 
 	@Override
@@ -86,6 +85,11 @@ public class ProductService implements IProductService{
 	@Override
 	public void deleteProduct(int id) {
 		dao.deleteProduct(id);
+	}
+
+	@Override
+	public List<Product> allProducts() {
+		return dao.allProducts();
 	}
 
 
