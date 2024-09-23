@@ -778,6 +778,144 @@ form {
     clear: both;
   }
 
+
+
+
+
+
+
+  /*desdde aqui el carrito */
+
+  .cart-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.cart {
+    background: white;
+    padding: 30px;
+    width: 650px; /* Aumenta el tamaño del carrito */
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.close-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Espacio entre productos */
+}
+
+.cart-item img {
+    width: 60px; /* Aumenta el tamaño de la imagen */
+    height: 60px;
+    object-fit: cover;
+}
+
+.cart-item h4 {
+    margin: 0;
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    flex: 1;
+    padding-left: 10px;
+    text-align: center; /* Centra el nombre del producto */
+}
+
+.cart-item span {
+    font-size: 16px;
+    color: #333;
+}
+
+.item-info {
+    text-align: center; /* Centra la información de cantidad */
+    flex: 1;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-control button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.cart-total {
+    margin-top: 20px;
+    font-size: 20px; /* Aumenta el tamaño de la fuente del total */
+    font-weight: bold;
+    text-align: center;
+}
+
+.checkout-btn {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.message-empty {
+    font-size: 16px;
+    color: #555;
+    margin-top: 20px;
+}
+
+
+#mensaje-de-alerta {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Color de fondo rojo */
+    color: white; /* Color de texto blanco */
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1001;
+    display: none; /* Oculto por defecto pues pa que solo aparezca cuando se de clic y no hay nada */
+}
+
+.alert-visible {
+    display: block; /* Mostrar cuando sea visible */
+}
+
+
+
+
+
 /*desdde aqui el carrito */
 
 .cart-overlay {
