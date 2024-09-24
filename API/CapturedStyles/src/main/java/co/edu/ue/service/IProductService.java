@@ -15,6 +15,7 @@ public interface IProductService {
 	List<Product> getByCategory(String category);
 	List<Product> getAllByStatus(Status status);
 	boolean existsByName(String name);
+	boolean existById(int id);
 	Product updateProduct(String name, Product product);
 	Product vigentProduct(String name, Product product);
 	void deleteProduct(int id);	

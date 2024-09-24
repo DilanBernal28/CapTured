@@ -3,6 +3,7 @@ package co.edu.ue.model;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class Order implements Serializable {
 	private List<Orderdetail> orderdetails;
 
 	public Order() {
+		this.orderdetails = new ArrayList<>();
 	}
 
 	public int getOrdId() {

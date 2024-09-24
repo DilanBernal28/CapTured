@@ -136,7 +136,9 @@ public class ProductController {
 	//Borra un usuario por su id
 	@DeleteMapping(value = "product/delete/{id}")
 	public ResponseEntity<Void> deleteProduct(@PathVariable("Id") int id){
-		service.deleteProduct(id);
+		if(service.existById(id)) {
+			service.deleteProduct(id);			
+		} else return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		return ResponseEntity.noContent().build();
 	}
 	

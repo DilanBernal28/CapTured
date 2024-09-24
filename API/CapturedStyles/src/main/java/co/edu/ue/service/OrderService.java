@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import co.edu.ue.dao.IOrderDao;
 import co.edu.ue.model.Order;
 import co.edu.ue.model.Order.Status;
-import co.edu.ue.model.Orderdetail;
 
 @Service
 public class OrderService implements IOrderService {
@@ -17,11 +16,18 @@ public class OrderService implements IOrderService {
 	@Autowired
 	IOrderDao dao;
 	
+	@Autowired
+	IOrderValidator orderValidator;
+	
+	
 		//Create
 	
 	@Override
 	public Order createOrder(Order order) {
-		return dao.addOrder(order);
+		
+		if(!orderValidator.validateOrder(order)) {			
+			return dao.addOrder(order); // Guarda la orden en la base de datos
+		}else return dao.addOrder(order);
 	}
 		//READ
 	

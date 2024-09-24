@@ -58,10 +58,15 @@ public class OrderController {
 	
 		//POST
 	
+	
 	@PostMapping(value = "/ordenes/nuevo")
 	public ResponseEntity<Order> newOrder(@RequestBody Order order) {
-		Order createdOrder = service.createOrder(order);
-		return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+		try {
+	        Order createdOrder = service.createOrder(order);
+	        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+	    } catch (IllegalArgumentException e) {
+	        return ResponseEntity.badRequest().body(null);
+	    }
 	}
 	
 		//PUT

@@ -15,14 +15,14 @@ public class ProductService implements IProductService{
 	@Autowired
 	IProductDao dao;
 	
-		//Todos los create
+		//CREATE
 
 	@Override
 	public Product newProduct(Product product) {
 		return dao.addProduct(product);
 	}
 
-		//Todos los read
+		//READ
 	
 	@Override
 	public List<Product> getByCategory(String category) {
@@ -60,7 +60,13 @@ public class ProductService implements IProductService{
 		return dao.existByName(name);
 	}
 	
-		//Los update
+	@Override
+	public boolean existById(int id) {
+		return dao.existById(id);
+	}
+
+	
+		//UPDATE
 	
 	@Override
 	public Product updateProduct(String name, Product newProduct) {

@@ -16,5 +16,6 @@ public interface IProductDao {
 	List<Product> searchAllByStatus(Status status);
 	List<Product> searchAllByName(String name);
 	boolean existByName(String name);
+	boolean existById(int id);
 	void deleteProduct(int id);
 }

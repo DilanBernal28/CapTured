@@ -63,4 +63,9 @@ public class ProductDao implements IProductDao{
 	public List<Product> allProducts() {
 		return jpa.findAll();
 	}
+
+	@Override
+	public boolean existById(int id) {
+		return jpa.existsById(id);
+	}
 }

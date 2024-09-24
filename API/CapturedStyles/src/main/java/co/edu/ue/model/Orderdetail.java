@@ -53,5 +53,10 @@ public class Orderdetail implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
+	public void setProductById(int productId) {
+		this.product = new Product();
+		this.product.setIdProducto(productId);
+	}
 
 }
