@@ -66,7 +66,7 @@ public class UserController {
 	}
 	//Trae todos los usuarios por el status
 	@GetMapping(value = "user/status/{status}")
-	public ResponseEntity<List<User>> getAllStatus(@PathVariable("status") Status status){
+	public ResponseEntity<List<User>> getAllStatus(@PathVariable("Status") Status status){
 		if(status == Status.activo || status == Status.baneado || status == Status.suspendido) {
 			List<User> datos = service.getByStatus(status);
 			try {
@@ -122,7 +122,7 @@ public class UserController {
 	
 	//Elimina un usuario(Solo lo haria el administrador por si hizo un usuario de prueba o alga si)
 	@DeleteMapping(value = "user/delete/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable("id") int id){
+	public ResponseEntity<Void> deleteUser(@PathVariable("Id") int id){
 		service.deleteUser(id);
 		return ResponseEntity.noContent().build();
 	}

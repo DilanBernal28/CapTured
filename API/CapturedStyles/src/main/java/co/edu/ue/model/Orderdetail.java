@@ -2,13 +2,10 @@ package co.edu.ue.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
-
-/**
- * The persistent class for the orderdetails database table.
- * 
- */
 @Entity
 @Table(name="orderdetails")
 @NamedQuery(name="Orderdetail.findAll", query="SELECT o FROM Orderdetail o")
@@ -19,9 +16,10 @@ public class Orderdetail implements Serializable {
 	private int ordpCantidad;
 
 	//bi-directional many-to-one association to Order
-	@ManyToOne
 	@Id
+	@ManyToOne
 	@JoinColumn(name="ord_id")
+	@JsonBackReference
 	private Order order;
 
 	//bi-directional many-to-one association to Product

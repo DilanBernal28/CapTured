@@ -49,6 +49,11 @@ public class ProductService implements IProductService{
 	public List<Product> getAllByStatus(Status status) {
 		return dao.searchAllByStatus(status);
 	}
+	
+	@Override
+	public List<Product> allProducts() {
+		return dao.allProducts();
+	}
 
 	@Override
 	public boolean existsByName(String name) {
@@ -87,10 +92,6 @@ public class ProductService implements IProductService{
 		dao.deleteProduct(id);
 	}
 
-	@Override
-	public List<Product> allProducts() {
-		return dao.allProducts();
-	}
 
 
 	

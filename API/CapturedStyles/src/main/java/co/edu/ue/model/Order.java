@@ -1,10 +1,13 @@
 package co.edu.ue.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import jakarta.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 /**
@@ -18,6 +21,7 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ord_id")
 	private int ordId;
 
@@ -25,13 +29,18 @@ public class Order implements Serializable {
 	private int idUser;
 
 	@Column(name="ord_fechaPedido")
-	private Timestamp ordFechaPedido;
+	private Date ordFechaPedido;
 
 	@Column(name="ord_precio")
 	private double ordPrecio;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name="ord_status")
+	private Status ordStatus;
+
 	//bi-directional many-to-one association to Orderdetail
-	@OneToMany(mappedBy="order")
+	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
 	private List<Orderdetail> orderdetails;
 
 	public Order() {
@@ -53,11 +62,11 @@ public class Order implements Serializable {
 		this.idUser = idUser;
 	}
 
-	public Timestamp getOrdFechaPedido() {
+	public Date getOrdFechaPedido() {
 		return ordFechaPedido;
 	}
 
-	public void setOrdFechaPedido(Timestamp ordFechaPedido) {
+	public void setOrdFechaPedido(Date ordFechaPedido) {
 		this.ordFechaPedido = ordFechaPedido;
 	}
 
@@ -67,6 +76,14 @@ public class Order implements Serializable {
 
 	public void setOrdPrecio(double ordPrecio) {
 		this.ordPrecio = ordPrecio;
+	}
+
+	public Status getOrdStatus() {
+		return this.ordStatus;
+	}
+
+	public void setOrdStatus(Status ordStatus) {
+		this.ordStatus = ordStatus;
 	}
 
 	public List<Orderdetail> getOrderdetails() {
@@ -89,6 +106,13 @@ public class Order implements Serializable {
 		orderdetail.setOrder(null);
 
 		return orderdetail;
+	}
+	public enum Status {
+		desatendido,
+		entregado,
+		cancelado,
+		despachado,
+		alistamiento
 	}
 
 }

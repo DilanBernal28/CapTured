@@ -1,9 +1,12 @@
 package co.edu.ue.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -39,6 +42,7 @@ public class Product implements Serializable {
 	private double prodPrecio;
 
 	//bi-directional many-to-one association to Orderdetail
+	@JsonIgnore
 	@OneToMany(mappedBy="product")
 	private List<Orderdetail> orderdetails;
 
@@ -122,7 +126,6 @@ public class Product implements Serializable {
 
 		return orderdetail;
 	}
-	
 	public enum Status {
 		activo,
 		baja,
