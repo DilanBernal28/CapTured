@@ -4,6 +4,8 @@ console.log(headerMenu.offsetTop);
 
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 80) {
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 80) {
         headerMenu.classList.add('header-fixed');
     } else {
         headerMenu.classList.remove('header-fixed');
@@ -14,12 +16,14 @@ window.addEventListener('scroll', () => {
     Tabs
 ==========================================*/
 if (document.querySelector('.hm-tabs')) {
+if (document.querySelector('.hm-tabs')) {
 
     const tabLinks = document.querySelectorAll('.hm-tab-link');
     const tabsContent = document.querySelectorAll('.tabs-content');
 
     tabLinks[0].classList.add('active');
 
+    if (document.querySelector('.tabs-content')) {
     if (document.querySelector('.tabs-content')) {
         tabsContent[0].classList.add('tab-active');
     }
@@ -28,13 +32,19 @@ if (document.querySelector('.hm-tabs')) {
 
         tabLinks[i].addEventListener('click', () => {
 
+
+        tabLinks[i].addEventListener('click', () => {
+
             tabLinks.forEach((tab) => tab.classList.remove('active'));
             tabLinks[i].classList.add('active');
+
 
             tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
             tabsContent[i].classList.add('tab-active');
 
+
         });
+
 
     }
 
@@ -46,11 +56,16 @@ if (document.querySelector('.hm-tabs')) {
 
 const menu = document.querySelector('.icon-menu');
 const menuClose = document.querySelector('.cerrar-menu');
+const menu = document.querySelector('.icon-menu');
+const menuClose = document.querySelector('.cerrar-menu');
 
+menu.addEventListener('click', () => {
 menu.addEventListener('click', () => {
     document.querySelector('.header-menu-movil').classList.add('active');
 });
+});
 
+menuClose.addEventListener('click', () => {
 menuClose.addEventListener('click', () => {
     document.querySelector('.header-menu-movil').classList.remove('active');
 });
@@ -185,7 +200,7 @@ document.querySelectorAll('.hm-btn.btn-primary').forEach(button => {
 // Mostrar el carrito al hacer clic en el icono del carrito
 document.querySelector('.hm-icon-cart').addEventListener('click', () => {
     if (cart.length === 0) {
-        showAlert("Ole care chimba, va a comprar sin agregar al carrito nada ? awebado");
+        showAlert("Seleccione un producto antes de realizar la compra.");
     } else {
         cartOverlay.style.display = 'flex'; // Mostrar el carrito si hay productos
     }
@@ -419,13 +434,6 @@ function scrollImage(event) {
     zoomContainer.scrollLeft = scrollLeft;
     zoomContainer.scrollTop = scrollTop;
 }
-
-
-
-
-
-
-
 
 
 
