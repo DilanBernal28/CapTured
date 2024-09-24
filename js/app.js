@@ -346,11 +346,6 @@ document.getElementById('accesorios').addEventListener('click', function() {
 // Por defecto, mostrar la sección de Clásicas al cargar la página
 mostrarSeccion('Productos');
 
-
-
-
-
-
 // Función para abrir el modal con la imagen
 function openModal(imageSrc) {
     var modal = document.getElementById('imageModal');
