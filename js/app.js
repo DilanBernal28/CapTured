@@ -80,6 +80,8 @@ function addToCart(product) {
 
 
 
+
+
 // Actualizar la interfaz de usuario del carrito
 function updateCartUI() {
     const cartCountElement = document.querySelector('.hm-icon-cart span');
@@ -420,3 +422,166 @@ function scrollImage(event) {
 
 
 
+
+
+
+
+
+
+
+
+document.getElementById('submenuButton').addEventListener('click', function() {
+    const submenu = document.querySelector('.submenu-vertical');
+    submenu.classList.toggle('hidden');
+    console.log("Botón presionado, mostrando/ocultando submenú");
+});
+
+// Añadir un evento a cada botón que abre un modal
+const modalButtons = document.querySelectorAll('[data-toggle="modal"]');
+
+modalButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Cerrar todos los modales abiertos
+        const modals = document.querySelectorAll('.modal.show');
+        modals.forEach(modal => {
+            $(modal).modal('hide');  // Ocultar el modal si está abierto
+        });
+
+        // Abrir el modal correspondiente al botón clicado
+        const targetModal = button.getAttribute('data-target');
+        $(targetModal).modal('show');
+    });
+});
+
+
+
+
+
+
+const checkoutBtn = document.getElementById('button-comprar');
+
+// Evento para mostrar el modal de compra y ocultar el carrito
+checkoutBtn.addEventListener('click', () => {
+    // Ocultar el carrito (sección de productos seleccionados)
+    cartOverlay.style.display = 'none'; //Oculta el carrito (sección de productos seleccionados
+
+    // Mostrar el modal de confirmación de compra (dirección y método de pago)
+    $('#confirmarCompraModal').modal('show');
+});
+// Evento para volver a mostrar el carrito si el modal se cierra sin confirmar la compra
+$('#confirmarCompraModal').on('hidden.bs.modal', () => {
+    // Mostrar el carrito nuevamente si el modal se cierra sin completar la compra
+    cartOverlay.style.display = 'flex';
+});
+
+
+
+
+
+// Escuchar cambios en el método de pago para actualizar el formulario
+document.getElementById('metodoPago').addEventListener('change', function () {
+    const metodoSeleccionado = this.value;
+    const metodoPagoInfo = document.getElementById('metodoPagoInfo');
+    
+    // Limpiar el contenedor
+    metodoPagoInfo.innerHTML = '';
+
+    // Mostrar campos según el método de pago seleccionado
+    if (metodoSeleccionado === 'tarjeta') {
+        metodoPagoInfo.innerHTML = `
+            <div class="form-group">
+                <label for="numeroTarjeta">Número de Tarjeta</label>
+                <input type="text" class="form-control" id="numeroTarjeta" placeholder="Introduce tu número de tarjeta">
+            </div>
+            <div class="form-group">
+                <label for="fechaExpiracion">Fecha de Expiración</label>
+                <input type="text" class="form-control" id="fechaExpiracion" placeholder="MM/AA">
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv" placeholder="Código CVV">
+            </div>
+        `;
+    } else if (metodoSeleccionado === 'pse') {
+        metodoPagoInfo.innerHTML = `
+            <div class="form-group">
+                <label for="banco">Banco</label>
+                <select class="form-control" id="banco">
+                    <option value="banco1">Banco pichincha:v</option>
+                    <option value="banco2">Bancolombia</option>
+                    <!-- Añadir más bancos si es necesario -->
+                </select>
+            </div>
+        `;
+    } else if (metodoSeleccionado === 'efectivo') {
+        metodoPagoInfo.innerHTML = `
+            <p class="texto-blanco">Te proporcionaremos un código para que puedas pagar en puntos de recaudo como Efecty o Baloto.</p>
+            <button id="generarCodigoBtn" class="btn btn-warning">Generar Código</button>
+            <p id="codigoEfectivo" class="texto-blanco"></p>
+        `;
+
+
+
+
+        
+        // Añadir el evento para generar código
+        document.getElementById('generarCodigoBtn').addEventListener('click', function () {
+            const codigo = 'CHINACOTALAMARIKA' + Math.floor(Math.random() * 1000000); // Generar código aleatorio
+            document.getElementById('codigoEfectivo').innerText = 'Tu código de pago es: ' + codigo;
+        });
+    }
+});
+
+// Lógica para confirmar la compra
+document.getElementById('confirmarCompraBtn').addEventListener('click', function () {
+    const direccion = document.getElementById('direccion').value;
+    const metodoPago = document.getElementById('metodoPago').value;
+    
+    if (!direccion) {
+        alert('Por favor ingresa tu dirección de envío.');
+        return;
+    }
+
+    if (metodoPago === 'tarjeta') {
+        const numeroTarjeta = document.getElementById('numeroTarjeta').value;
+        const fechaExpiracion = document.getElementById('fechaExpiracion').value;
+        const cvv = document.getElementById('cvv').value;
+
+        if (!numeroTarjeta || !fechaExpiracion || !cvv) {
+            alert('Por favor completa la información de tu tarjeta.');
+            return;
+        }
+
+        console.log('Pago con tarjeta:', { numeroTarjeta, fechaExpiracion, cvv });
+        // Aquí puedes procesar el pago con tarjeta
+    } else if (metodoPago === 'pse') {
+        const banco = document.getElementById('banco').value;
+        if (!banco) {
+            alert('Por favor selecciona tu banco.');
+            return;
+        }
+
+        console.log('Pago con PSE:', banco);
+        // Aquí puedes procesar el pago con PSE
+    } else if (metodoPago === 'efectivo') {
+        const codigoEfectivo = document.getElementById('codigoEfectivo').innerText;
+        if (!codigoEfectivo) {
+            alert('Por favor genera un código para pagar en efectivo.');
+            return;
+        }
+
+        console.log('Pago en efectivo:', codigoEfectivo);
+        // Aquí puedes procesar el pago en efectivo
+    }
+
+    // Cerrar el modal
+    $('#confirmarCompraModal').modal('hide');
+
+    // Resetear formulario después de la compra
+    document.getElementById('compraForm').reset();
+    document.getElementById('metodoPagoInfo').innerHTML = '';
+    
+    // Opcional: Limpiar el carrito de compras
+    cart = [];
+    updateCartUI();
+});
