@@ -80,6 +80,8 @@ function addToCart(product) {
 
 
 
+
+
 // Actualizar la interfaz de usuario del carrito
 function updateCartUI() {
     const cartCountElement = document.querySelector('.hm-icon-cart span');
@@ -183,7 +185,7 @@ document.querySelectorAll('.hm-btn.btn-primary').forEach(button => {
 // Mostrar el carrito al hacer clic en el icono del carrito
 document.querySelector('.hm-icon-cart').addEventListener('click', () => {
     if (cart.length === 0) {
-        showAlert("Seleccione un producto antes de realizar la compra.");
+        showAlert("Ole care chimba, va a comprar sin agregar al carrito nada ? awebado");
     } else {
         cartOverlay.style.display = 'flex'; // Mostrar el carrito si hay productos
     }
@@ -417,10 +419,6 @@ function scrollImage(event) {
     zoomContainer.scrollLeft = scrollLeft;
     zoomContainer.scrollTop = scrollTop;
 }
-
-
-
-
 
 
 
