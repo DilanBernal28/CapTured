@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejemplo de Estilos en JavaScript</title>
+    <style>
+        .miClase {
+            color: blue;
+            font-size: 50px;
+            animation: error 2s linear ;
+        }
+        @keyframes error {
+            0%{
+            background-color: #710a0a64;
+            }
+            50%{
+            background-color: #eaa0a064;
+
+            }
+            99%{
+            }
+            100%{
+                background-color: #710a0a64;
+                background-color: none;
+            }    
+        }
+    </style>
 </head>
 <body>
-    <form id="xd"></form>
-        <label name="usrUsername">Nombre de usuario:</label>
-        <input type="text" id="usrUsername" name="usrUsername"><br>
-        <label for="usrPassword">Contraseña:</label>
-        <input type="password" id="usrPassword" name="usrPassword"><br>
-        
-        <button id="btn" type="submit">Enviar</button>
-    </form>
-    <p id="abc" style="padding: 2%; "></p>
-    <br>
-    <a href="./xd.html">signin</a>
 
-    <script src="./script.js"></script>
+<div id="miElemento">Texto Original</div>
+<button id="cambiarEstilos">Cambiar Estilos</button>
+
+<script>
+    document.getElementById('cambiarEstilos').onclick = function() {
+        const element = document.getElementById('miElemento');
+
+        // // Cambiar estilos directamente
+        // element.style.color = 'red';
+        // element.style.backgroundColor = 'yellow';
+        // element.style.fontSize = '24px';
+
+        // Alternar clase CSS
+        element.classList.toggle('miClase');
+    };
+</script>
+
 </body>
 </html>

@@ -15,6 +15,8 @@ body{
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
+    z-index: 2;
+    color: goldenrod;
   }
   
   .login-box p:first-child {
@@ -54,6 +56,47 @@ body{
     transition: .5s;
   }
   
+  
+  .avisoSesion{
+    display: flex;               /* Activa Flexbox */
+    flex-direction: column;      /* Alinea el contenido en columna */
+    justify-content: center;     /* Centra verticalmente */
+    align-items: center;         /* Centra horizontalmente */
+    height: 80vh;               /* Usa el 100% de la altura de la pantalla */
+    text-align: center;          /* Alinea el texto en el centro */
+    background-color: #883535;  
+    z-index: 2000000000;
+    color: rgb(255, 255, 255);
+    font-size: 500%;
+  }
+
+  .usuarioCorrecto{
+    font-size: 50px;
+    padding: 5%;
+    width: 70%;
+    text-align: center;
+    span{
+      font-size: 200%;
+    }
+    a{
+      background: blue;
+      padding: 2%;
+      margin: 1%;
+      color: #fff;
+      font-size: none;
+      text-decoration: none;
+      border-radius: 20px;
+    }
+  }
+
+  .avisoUsuario{
+    color: #fff;
+    padding: 3px;
+  }
+  .avisoUsuarioIncorrecto{
+    transition: 2s;
+    animation: resaltado 1s ease-in-out;
+  }
   
   .login-box .user-box input:focus ~ label,
   .login-box .user-box input:valid ~ label {
@@ -110,6 +153,19 @@ body{
     50%,100% {
       left: 100%;
     }
+  }
+
+  @keyframes resaltado {
+    0%{
+      background-color: #710a0a64;
+    }
+    50%{
+      background-color: #ff5e0dcf;
+
+    }
+    100%{
+      background-color: #710a0a64;
+    }    
   }
   
   .login-box #btnEnviar span:nth-child(2) {

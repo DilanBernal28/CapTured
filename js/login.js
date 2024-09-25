@@ -6,6 +6,10 @@ document.getElementById('login-box').addEventListener('submit', function(event) 
     getUser();
 });
 
+var aviso = document.getElementById('avisoUsuario')
+
+var noje = document.getElementById('login-contenedor');
+
 async function getToken(){
     
 }
@@ -21,22 +25,32 @@ async function getUser(){
     }).then(response => {
         switch(response.status){
             case 202:
-                console.log("hola");
                 return response.json();
             case 404:
-                console.log("no encontrao")
+                aviso.innerText = "Usuario no encontrado"
+                aviso.classList.toggle(`avisoUsuarioIncorrecto`)              
                 break
             default:
+                aviso.innerText = "Error inesperado"
+                aviso.classList.toggle('avisoUsuarioIncorrecto')
                 throw new Error(`Error inesperado: ${response.status}`)
         }
     })
     .catch(error => {
-        console.log('xd' + error)
+        console.error(error)
+        aviso.innerText = "Error de servidor"
     })
 
     if(usrPassword == user.usrPassword){
-        console.log("paswo correcto")
+        noje.innerHTML = `
+        <span>Inicio de sesion correcto</span><br>
+        <span>Bienvenido ${usrUsername}</span><br>
+        <a href="../index.html">Pagina principal</a>`
+        noje.classList.add('usuarioCorrecto')
     }else {
-        console.log('inccorecto paswo')
+        aviso.innerText =("Contraseña incorrecta")
+        aviso.classList.toggle('avisoUsuarioIncorrecto')
     }
+
+    
 }

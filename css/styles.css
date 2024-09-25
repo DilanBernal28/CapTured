@@ -312,6 +312,10 @@ img{
 
 }
 
+.gri{
+    color: white;
+}
+
 .hm-grid-category,
 .grid-product{
     display: grid;
@@ -360,7 +364,9 @@ img{
     font-weight: 400;
     text-align: center;
 }
-
+.categoryslist{
+    margin-bottom: 2%;
+}
 
 /*=================================
     ESTILOS: Productos destacados
@@ -394,20 +400,21 @@ img{
 .hm-tabs .hm-tab-link.active .tabs-content{
     background: red;
 }
-/* CONTENIDO TABs */
+/* CONTENIDO TABs
 .tabs-content{
     display: none;
     padding-top: 50px;
-}
+} */
 
 .tabs-content.tab-active{
     display: block;
 }
 
-.grid-product .product-item{
+.product-item{
     overflow: hidden;
     background: #fff;
     border:1px solid #EEF5F9;
+    list-style-type: none;
     border-radius: 5px;
     
 }
