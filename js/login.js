@@ -8,7 +8,7 @@ document.getElementById('login-box').addEventListener('submit', function(event) 
 
 var aviso = document.getElementById('avisoUsuario')
 
-var noje = document.getElementById('login-contenedor');
+var loginBox = document.getElementById('login-contenedor');
 
 async function getToken(){
     
@@ -42,11 +42,15 @@ async function getUser(){
     })
 
     if(usrPassword == user.usrPassword){
-        noje.innerHTML = `
+        localStorage('')
+        loginBox.innerHTML = `
         <span>Inicio de sesion correcto</span><br>
         <span>Bienvenido ${usrUsername}</span><br>
         <a href="../index.html">Pagina principal</a>`
-        noje.classList.add('usuarioCorrecto')
+        loginBox.classList.add('usuarioCorrecto')
+
+        console.log(localStorage.getItem(usuario))
+
     }else {
         aviso.innerText =("Contraseña incorrecta")
         aviso.classList.toggle('avisoUsuarioIncorrecto')

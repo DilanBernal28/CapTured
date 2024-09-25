@@ -5,7 +5,14 @@ document.getElementById('login-box').addEventListener('submit', function(event) 
     // Hacer la solicitud POST a la API
 });
 
+
+var aviso = document.getElementById('avisoUsuario')
+
+var loginBox = document.getElementById('login-contenedor');
+
 async function postDatos() {
+
+    var salioBien = new Boolean;
     // Obtener los valores de los campos del formulario
     const usrNombres = document.getElementById('usrNombre').value;
     const usrApellidos = document.getElementById('usrApellidos').value;
@@ -26,7 +33,8 @@ async function postDatos() {
         usrPassword: usrPassword,
         usrTelefono: usrTelefono,
         usrActive: 'activo',
-        usrUsername: usrUsername
+        usrUsername: usrUsername,
+        role: 'USER'
     };
     console.log(data);
     
@@ -42,19 +50,31 @@ async function postDatos() {
         .then(response => {
             switch(response.status){
                 case 201:
-                    console.log("hola");
+                    salioBien = true
                     return response.json();
                 case 302:
-                    console.log("nombre de usuario ya existente")
+                    salioBien = false;
                     break;
                 default:
                     throw new Error(`Error inesperado: ${response.status}`)
             }
         })
         .catch(error => {
-            console.log('Error:', error);
+            aviso.innerText =("Error")
         });    
     } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
+        aviso.innerText =('Error al realizar la solicitud:', error);
+    }
+
+    if(salioBien == true){
+        salioBien = true;
+        loginBox.innerHTML = `
+        <span>Se creo correctamente el usuario ${usrUsername}</span><br>
+        <span>Bienvenido ${usrNombres}</span><br>
+        <a href="../index.html">Pagina principal</a>`
+        loginBox.classList.add('usuarioCorrecto')
+    } else if(salioBien == false){
+        aviso.innerText =("Error")
+        aviso.classList.toggle('avisoUsuarioIncorrecto')
     }
 }
