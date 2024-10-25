@@ -13,32 +13,32 @@ window.addEventListener('scroll', () => {
 /*=========================================
     Tabs
 ==========================================*/
-// if (document.querySelector('.hm-tabs')) {
+if (document.querySelector('.hm-tabs')) {
 
-//     const tabLinks = document.querySelectorAll('.hm-tab-link');
-//     const tabsContent = document.querySelectorAll('.tabs-content');
+    const tabLinks = document.querySelectorAll('.hm-tab-link');
+    const tabsContent = document.querySelectorAll('.tabs-content');
 
-//     tabLinks[0].classList.add('active');
+    tabLinks[0].classList.add('active');
 
-//     if (document.querySelector('.tabs-content')) {
-//         tabsContent[0].classList.add('tab-active');
-//     }
+    if (document.querySelector('.tabs-content')) {
+        tabsContent[0].classList.add('tab-active');
+    }
 
-//     for (let i = 0; i < tabLinks.length; i++) {
+    for (let i = 0; i < tabLinks.length; i++) {
 
-//         tabLinks[i].addEventListener('click', () => {
+        tabLinks[i].addEventListener('click', () => {
 
-//             tabLinks.forEach((tab) => tab.classList.remove('active'));
-//             tabLinks[i].classList.add('active');
+            tabLinks.forEach((tab) => tab.classList.remove('active'));
+            tabLinks[i].classList.add('active');
 
-//             tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
-//             tabsContent[i].classList.add('tab-active');
+            tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
+            tabsContent[i].classList.add('tab-active');
 
-//         });
+        });
 
-//     }
+    }
 
-// }
+}
 
 /*=========================================
     MENU
