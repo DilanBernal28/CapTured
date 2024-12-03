@@ -49,18 +49,18 @@ public class UserService implements IUserService {
 	@Override
 	public User upUser(String usrnm, User newDataUser) {
 		//hace busqueda de el username para actualizar los campos
-			Optional<User> optionalUser = dao.searchByUsername(usrnm);
-			
-			User existingDataUser = optionalUser.get();
-			
-			existingDataUser.setUsrNombres(newDataUser.getUsrNombres());
-			existingDataUser.setUsrApellidos(newDataUser.getUsrApellidos());
-			existingDataUser.setUsrDireccion(newDataUser.getUsrDireccion());
-			existingDataUser.setUsrEmail(newDataUser.getUsrEmail());
-			existingDataUser.setUsrTelefono(newDataUser.getUsrTelefono());
-			existingDataUser.setUsrUsername(newDataUser.getUsrUsername());
-			
-			return dao.updateUser(existingDataUser);
+		Optional<User> optionalUser = dao.searchByUsername(usrnm);
+		
+		User existingDataUser = optionalUser.get();
+		
+		existingDataUser.setUsrNombres(newDataUser.getUsrNombres());
+		existingDataUser.setUsrApellidos(newDataUser.getUsrApellidos());
+		existingDataUser.setUsrDireccion(newDataUser.getUsrDireccion());
+		existingDataUser.setUsrEmail(newDataUser.getUsrEmail());
+		existingDataUser.setUsrTelefono(newDataUser.getUsrTelefono());
+		existingDataUser.setUsrUsername(newDataUser.getUsrUsername());
+		
+		return dao.updateUser(existingDataUser);
 	}
 	@Override
 	public User statusUser(String usrnm, User newDataUser) {
