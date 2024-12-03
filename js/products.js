@@ -10,16 +10,26 @@ async function getProducts() {
             }
         });
         
+
         if (!response.ok) {
             console.log('Error en la solicitud: ' + response.statusText);
+            var productoContenedor = document.getElementById('grid-product');
+            productoContenedor.innerHTML = `<div> Hubo un error al buscar los productos </div>`
         }
 
         const products = await response.json();
+        if(products == '' || products == null){
+            console.log("1")
+            var productoContenedor = document.getElementById('grid-product');
+            productoContenedor.innerHTML = `<div> Hubo un error al buscar los productos </div>`
+        }
         displayProducts(products); // Llamar función para mostrar productos
         applyCartListeners();
         
     } catch (error) {
         console.error('Hubo un problema con la solicitud:', error);
+        var productoContenedor = document.getElementById('grid-product');
+        productoContenedor.innerHTML = `<div> Hubo un error al buscar los productos </div>`
     }
 }
 async function getProductsByCategory(category){
@@ -33,17 +43,34 @@ async function getProductsByCategory(category){
         
         if (!response.ok) {
             console.log('Error en la solicitud: ' + response.statusText);
+            var productoContenedor = document.getElementById('grid-product');
+            productoContenedor.innerHTML = `<div> Hubo un error al buscar los productos </div>`
         }
 
         const products = await response.json();
-        displayProducts(products); // Llamar función para mostrar productos
-        applyCartListeners();
+        if(products == '' || products == null || products == ""){
+            console.log("afpoajf");
+            console.log(products);
+            mostrarError("Error")
+        }
+        else{
+            displayProducts(products); // Llamar función para mostrar productos
+            applyCartListeners();
+        }
         
     } catch (error) {
+        var productoContenedor = document.getElementById('grid-product');
+        productoContenedor.innerHTML = `<div> Hubo un error al buscar los productos</div>`
         console.error('Hubo un problema con la solicitud:', error);
     }
 }
 
+
+function mostrarError(mensajeError){
+    var productoContenedor = document.getElementById('grid-product');
+    productoContenedor.innerHTML = `<div> ${mensajeError}</div>`
+
+}
 
 // Función para mostrar los productos en el HTML
 function displayProducts(products) {
