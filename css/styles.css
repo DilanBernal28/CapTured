@@ -323,6 +323,12 @@ img{
     row-gap: 2rem;
     column-gap: 2rem;
     max-width: 1122px;
+    color: #fff;
+}
+.grid-product div{
+    text-align: center;
+    grid-column: 1/-1;
+    padding: 10%;
 }
 
 .hm-grid-category .grid-item{
