@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/usr/user'
+const url = 'https://dq5jx513-8080.use2.devtunnels.ms/usr/user'
 
 
 document.getElementById('login-box').addEventListener('submit', function(event) {
@@ -25,6 +25,7 @@ async function getUser(){
     }).then(response => {
         switch(response.status){
             case 202:
+                aviso.innerText = `Inicio correctamente sesion`
                 return response.json();
             case 404:
                 aviso.innerText = "Usuario no encontrado"
@@ -41,20 +42,20 @@ async function getUser(){
         aviso.innerText = "Error de servidor"
     })
 
-    if(usrPassword == user.usrPassword){
-        localStorage('')
-        loginBox.innerHTML = `
-        <span>Inicio de sesion correcto</span><br>
-        <span>Bienvenido ${usrUsername}</span><br>
-        <a href="../index.html">Pagina principal</a>`
-        loginBox.classList.add('usuarioCorrecto')
+    // if(usrPassword == user.usrPassword){
+    //     localStorage('')
+    //     loginBox.innerHTML = `
+    //     <span>Inicio de sesion correcto</span><br>
+    //     <span>Bienvenido ${usrUsername}</span><br>
+    //     <a href="../index.html">Pagina principal</a>`
+    //     loginBox.classList.add('usuarioCorrecto')
 
-        console.log(localStorage.getItem(usuario))
+    //     console.log(localStorage.getItem(usuario))
 
-    }else {
-        aviso.innerText =("Contraseña incorrecta")
-        aviso.classList.toggle('avisoUsuarioIncorrecto')
-    }
+    // }else {
+    //     aviso.innerText =("Contraseña incorrecta")
+    //     aviso.classList.toggle('avisoUsuarioIncorrecto')
+    // }
 
     
 }

@@ -81,6 +81,7 @@ public class UserService implements IUserService {
 		return dao.updateUser(existingDataUser);
 }
 	
+	@Override
 	public boolean existsByUsername(String username) {
 		return dao.existByUsername(username);
 	}
