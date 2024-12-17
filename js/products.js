@@ -1,5 +1,4 @@
-
-const url = 'https://dq5jx513-8080.use2.devtunnels.ms/prd/product';
+const url = 'http://localhost:8080/prd/product';
 
 async function getProducts() {
     try {

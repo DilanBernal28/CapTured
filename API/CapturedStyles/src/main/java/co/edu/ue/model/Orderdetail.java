@@ -5,8 +5,14 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="orderdetails")
 @NamedQuery(name="Orderdetail.findAll", query="SELECT o FROM Orderdetail o")
 public class Orderdetail implements Serializable {
@@ -26,37 +32,4 @@ public class Orderdetail implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_producto")
 	private Product product;
-
-	public Orderdetail() {
-	}
-
-	public int getOrdpCantidad() {
-		return this.ordpCantidad;
-	}
-
-	public void setOrdpCantidad(int ordpCantidad) {
-		this.ordpCantidad = ordpCantidad;
-	}
-
-	public Order getOrder() {
-		return this.order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
-	public Product getProduct() {
-		return this.product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	
-	public void setProductById(int productId) {
-		this.product = new Product();
-		this.product.setIdProducto(productId);
-	}
-
 }

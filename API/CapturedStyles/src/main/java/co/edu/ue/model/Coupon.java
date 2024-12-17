@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.*;
 
 
 /**
@@ -13,6 +13,10 @@ import lombok.Builder;
  */
 @Entity
 @Table(name="coupons")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @NamedQuery(name="Coupon.findAll", query="SELECT c FROM Coupon c")
 public class Coupon implements Serializable {
@@ -33,76 +37,12 @@ public class Coupon implements Serializable {
 	@Column(name="cup_valid")
 	private Valid cupValid;
 
-	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
-	
-	
-	
-	public int getCupId() {
-		return cupId;
-	}
-
-
-
-	public void setCupId(int cupId) {
-		this.cupId = cupId;
-	}
-
-
-
-	public float getCupDiscount() {
-		return cupDiscount;
-	}
-
-
-
-	public void setCupDiscount(float cupDiscount) {
-		this.cupDiscount = cupDiscount;
-	}
-
-
-
-	public Valid getCupValid() {
-		return cupValid;
-	}
-
-
-
-	public void setCupValid(Valid cupValid) {
-		this.cupValid = cupValid;
-	}
-
-
-
-	
-	public User getUser() {
-		return user;
-	}
-
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-
 
 	public enum Valid{
 		si,
 		no
-	}
-
-
-
-	public int getCupFire() {
-		return cupFire;
-	}
-
-
-
-	public void setCupFire(int cupFire) {
-		this.cupFire = cupFire;
 	}
 }

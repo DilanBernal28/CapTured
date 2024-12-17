@@ -3,12 +3,11 @@ package co.edu.ue.model;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import lombok.Data;
 
 
 /**
@@ -16,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  * 
  */
 @Entity
+@Data
 @Table(name="orders")
 @NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
 public class Order implements Serializable {
@@ -43,58 +43,6 @@ public class Order implements Serializable {
 	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
 	private List<Orderdetail> orderdetails;
-
-	public Order() {
-		this.orderdetails = new ArrayList<>();
-	}
-
-	public int getOrdId() {
-		return this.ordId;
-	}
-
-	public void setOrdId(int ordId) {
-		this.ordId = ordId;
-	}
-
-	public int getIdUser() {
-		return this.idUser;
-	}
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-
-	public Date getOrdFechaPedido() {
-		return ordFechaPedido;
-	}
-
-	public void setOrdFechaPedido(Date ordFechaPedido) {
-		this.ordFechaPedido = ordFechaPedido;
-	}
-
-	public double getOrdPrecio() {
-		return this.ordPrecio;
-	}
-
-	public void setOrdPrecio(double ordPrecio) {
-		this.ordPrecio = ordPrecio;
-	}
-
-	public Status getOrdStatus() {
-		return this.ordStatus;
-	}
-
-	public void setOrdStatus(Status ordStatus) {
-		this.ordStatus = ordStatus;
-	}
-
-	public List<Orderdetail> getOrderdetails() {
-		return this.orderdetails;
-	}
-
-	public void setOrderdetails(List<Orderdetail> orderdetails) {
-		this.orderdetails = orderdetails;
-	}
 
 	public Orderdetail addOrderdetail(Orderdetail orderdetail) {
 		getOrderdetails().add(orderdetail);
