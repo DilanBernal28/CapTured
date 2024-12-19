@@ -44,7 +44,7 @@ public class UserController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("cantidad_datos", String.valueOf(datos.size()));
 		headers.add("otro_dat", "user");
-		return new ResponseEntity<List<User>>(datos,headers,HttpStatus.OK);
+		return new ResponseEntity<>(datos,headers,HttpStatus.OK);
 	}
 	
 	//Trae un usuario por id
@@ -52,16 +52,16 @@ public class UserController {
 	public ResponseEntity<User> getUserById(@PathVariable("idu") int id){
 		if(service.getById(id) == null) {
 				return	new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}else return new ResponseEntity<User>(service.getById(id),HttpStatus.ACCEPTED);
+		}else return new ResponseEntity<>(service.getById(id),HttpStatus.ACCEPTED);
 	}
 	
 	//Trae un usuario por el username
 	@GetMapping(value = "user/nm/{usrnm}")
 	public ResponseEntity<Optional<User>> getUserByUsername(@PathVariable("usrnm") String username){
 		if(service.existsByUsername(username)) {
-			return new ResponseEntity<Optional<User>>(service.getByUsername(username),HttpStatus.ACCEPTED);
+			return new ResponseEntity<>(service.getByUsername(username),HttpStatus.ACCEPTED);
 		} else {
-			return new ResponseEntity<Optional<User>>(service.getByUsername(username),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(service.getByUsername(username),HttpStatus.NOT_FOUND);
 		}
 	}
 	//Trae todos los usuarios por el status
@@ -70,12 +70,12 @@ public class UserController {
 		if(status == Status.activo || status == Status.baneado || status == Status.suspendido) {
 			List<User> datos = service.getByStatus(status);
 			try {
-				return new ResponseEntity<List<User>>(datos,HttpStatus.OK);
+				return new ResponseEntity<>(datos,HttpStatus.OK);
 			} catch (Exception e) {
-				return new ResponseEntity<List<User>>(HttpStatus.CONFLICT);
+				return new ResponseEntity<>(HttpStatus.CONFLICT);
 			}
 		}else {
-			return new ResponseEntity<List<User>>(HttpStatus.CONFLICT);
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 	}
 	
@@ -88,9 +88,9 @@ public class UserController {
 		headers.add("Mensaje", "Se agrego exitosamente");
 		if(!service.existsByUsername(user.getUsrUsername())) {
 			service.addUser(user);
-			return new ResponseEntity<Void>(headers,HttpStatus.CREATED);
+			return new ResponseEntity<>(headers,HttpStatus.CREATED);
 		}else{
-			return new ResponseEntity<Void>(HttpStatus.FOUND);
+			return new ResponseEntity<>(HttpStatus.FOUND);
 		}
 		
 	}

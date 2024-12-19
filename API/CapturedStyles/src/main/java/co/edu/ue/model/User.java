@@ -14,13 +14,17 @@ import jakarta.persistence.NamedQuery;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable/* , UserDetails*/ {
 	private static final long serialVersionUID = 1L;
