@@ -1,4 +1,4 @@
-const url = 'https://dq5jx513-8080.use2.devtunnels.ms/usr/user';
+const url = 'https://localhost:3000/usr/user';
 document.getElementById('login-box').addEventListener('submit', function(event) {
     event.preventDefault();
     postDatos()

@@ -56,9 +56,7 @@ public class UserService implements IUserService {
 		existingDataUser.setUsrNombres(newDataUser.getUsrNombres());
 		existingDataUser.setUsrApellidos(newDataUser.getUsrApellidos());
 		existingDataUser.setUsrDireccion(newDataUser.getUsrDireccion());
-		existingDataUser.setUsrEmail(newDataUser.getUsrEmail());
 		existingDataUser.setUsrTelefono(newDataUser.getUsrTelefono());
-		existingDataUser.setUsrUsername(newDataUser.getUsrUsername());
 		
 		return dao.updateUser(existingDataUser);
 	}
