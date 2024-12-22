@@ -1,0 +1,10 @@
+:host{
+    margin-top: 10%;
+}
+h1 {
+  position: relative;
+}
+h1 span {
+    position: absolute;
+    top: -550%;
+}
