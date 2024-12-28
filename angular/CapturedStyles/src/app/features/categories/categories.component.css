@@ -1,10 +1,41 @@
-:host{
-    margin-top: 10%;
-}
 h1 {
+  margin-top: 5%;
   position: relative;
 }
 h1 span {
-    position: absolute;
-    top: -550%;
+  position: absolute;
+  top: -550%;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.container{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.edicionLimitada{
+  background: url('/Edition One.jpeg');
+  background-size: 100%;
+  transition: 0.3s;
+  background-position: center;
+}
+.edicionLimitada:hover{
+  background-size: 110%;
+  transition: 0.5s;
+  background-position: center;
+}
+.row{
+  gap: 0px;
+}
+.col-3 {
+  filter: drop-shadow(0px 0px 5px #ffffff80);
+  overflow: hidden;
+}
+.col-3 img {
+  transition: transform 0.3s ease;
+}
+.col-3:hover img {
+  transform: scale(1.2);
+  border-radius: 4px;
 }
