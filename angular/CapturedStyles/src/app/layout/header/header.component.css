@@ -15,6 +15,15 @@ nav {
   -o-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
+
+.animation-top {
+  animation: slideToUp 0.5s ease-in;
+}
+
+.animation-down {
+  animation: slideToDown 0.5s ease-in;
+}
+
 .counter-cart {
   position: absolute;
   width: 15px;
@@ -42,17 +51,40 @@ nav {
 
 .header-fixed {
   position: fixed;
-  top: 0;
+  top: 2%;
+  width: 100%;
   z-index: 20;
-  border: 5px solid green;
-  animation: slideToUp 0.5s ease-in;
+  left: 7%;
+  box-shadow: 0 0 10px var(--color-principal);
+  /* animation: slideToUp 0.5s ease-in; */
 }
 
-@keyframes slideToUp {
-  0%{
-    transform: translateY(100%);
+/* .header-fixed {
+  position: sticky;
+  top: 2%;
+  border: 5px solid green;
+  z-index: 20;
+  transition: all 0.6s;
+  box-shadow: 0 4px 10px red;
+  nav {
+    border: 5px solid green;
   }
-  100%{
+} */
+
+@keyframes slideToUp {
+  0% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideToDown {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
     transform: translateY(0%);
   }
 }
