@@ -12,6 +12,7 @@ export class HeaderComponent {
   cart = [];
   totalAmmount: number = 0;
   animationApplied: boolean = false;
+  breakpointScroll: number = 65;
 
   @ViewChild('headerMenu', { static: true }) headerMenu?: ElementRef;
 
@@ -33,32 +34,18 @@ export class HeaderComponent {
 
     if (this.headerMenu) {
       const headerElement = this.headerMenu.nativeElement;
-
-      // Si el scroll es mayor a 100 y no se ha aplicado la animación de fijado
-      if (scrollPosition > 100 && !this.animationApplied) {
-        // Limpia cualquier clase previa
+      if (scrollPosition > this.breakpointScroll && !this.animationApplied) {
         headerElement.classList.remove('animation-down');
-
-        // Agregar clase para deslizar de abajo hacia arriba
         headerElement.classList.add('header-fixed', 'animation-top');
         this.animationApplied = true;
-
-        // Eliminar la clase de animación después de completarse
         setTimeout(() => {
           headerElement.classList.remove('animation-top');
         }, 600);
       }
-
-      // Si el scroll es menor a 100 y está aplicada la animación de fijado
-      else if (scrollPosition <= 100 && this.animationApplied) {
-        // Limpia cualquier clase previa
+      else if (scrollPosition <= this.breakpointScroll && this.animationApplied) {
         headerElement.classList.remove('animation-top', 'header-fixed');
-
-        // Agregar clase para deslizar de arriba hacia abajo
         headerElement.classList.add('animation-down');
         this.animationApplied = false;
-
-        // Eliminar la clase de animación después de completarse
         setTimeout(() => {
           headerElement.classList.remove('animation-down');
         }, 600);
