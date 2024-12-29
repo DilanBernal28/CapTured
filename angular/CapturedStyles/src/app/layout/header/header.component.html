@@ -13,18 +13,19 @@
     <li class="dropdown-item">Cupones</li>
   </ul>
 </div>
-<nav #headerMenu class="container rounded p-4 bg-black">
-  <div class="row align-items-center text-white fw-medium">
-    <img class="col-2" src="Captured Styles.jpg" alt=""/>
-    <div class="col"></div>
-    <span (click)="scrollTo('nosotros')" class="col">Nosotros</span>
-    <span (click)="scrollTo('categorias')" class="col">Categorias</span>
-    <span class="col">Productos</span>
-    <span class="col">Contactanos</span>
-    <span class="col"></span>
-    <span class="col cart-container justify-content-end">
-      <i class="las la-shopping-cart"></i>
-      <span class="counter-cart">0</span>
-    </span>
+<nav #headerMenu class="container navbar navbar-expand-lg rounded p-4 bg-black">
+  <button class="ms-5 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-target-collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <img class="navbar-brand ps-xl-5 ps-lg-4" src="Captured Styles.jpg" alt=""/>
+  <div class="row align-items-center text-white fw-medium collapse navbar-collapse" id="navbar-target-collapse">
+    <span (click)="scrollTo('nosotros')" class="col-lg nav-item">Nosotros</span>
+    <span (click)="scrollTo('categorias')" class="col-lg nav-item">Categorias</span>
+    <span class="col-lg nav-item">Productos</span>
+    <span class="col-lg nav-item">Contactanos</span>
   </div>
+  <span class="col cart-container justify-content-end">
+    <i class="las la-shopping-cart"></i>
+    <span class="counter-cart">0</span>
+  </span>
 </nav>

@@ -39,8 +39,9 @@ nav {
 
 .btn-user {
   position: fixed;
-  top: 3.5%;
+  top: 5vh;
   animation: slideToUp 0.5s ease-in;
+  z-index: 20;
   left: 2%;
   background-color: white;
 }
@@ -52,8 +53,20 @@ nav {
 .header-fixed {
   position: fixed;
   top: 2%;
+  left: 10%;
   width: 100%;
   z-index: 20;
-  left: 7%;
   box-shadow: 0 0 10px var(--color-principal);
+}
+
+@media screen and (max-width: 1460px) and (min-width:1400px){
+  .navbar{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1040px) and (min-width:990px){
+  .navbar{
+    width: 80%;
+  }
 }
