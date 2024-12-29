@@ -11,6 +11,7 @@ import { SharedService } from '../../services/shared.service';
 export class HeaderComponent {
   cart = [];
   totalAmmount: number = 0;
+  productsInCart: number = 0;
   animationApplied: boolean = false;
   breakpointScroll: number = 65;
 
