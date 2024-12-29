@@ -1,6 +1,7 @@
 .la-shopping-cart {
   font-size: 33px;
 }
+
 .cart-container {
   position: relative;
   flex: 0 0%;
@@ -45,6 +46,7 @@ nav {
   left: 2%;
   background-color: white;
 }
+
 .btn-user i {
   font-size: 25px;
   color: var(--color-principal);
@@ -52,21 +54,19 @@ nav {
 
 .header-fixed {
   position: fixed;
-  top: 2%;
-  left: 10%;
+  top: 2vh;
+  left: 0;
+  right: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 15;
   box-shadow: 0 0 10px var(--color-principal);
 }
 
-@media screen and (max-width: 1460px) and (min-width:1400px){
-  .navbar{
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 1040px) and (min-width:990px){
-  .navbar{
+@media screen and (min-width: 1400px) and (max-width: 1460px),
+screen and (min-width: 990px) and (max-width: 1055px),
+screen and (min-width: 768px) and (max-width: 855px),
+screen and (min-width: 576px) and (max-width: 668px) {
+  .navbar {
     width: 80%;
   }
 }
