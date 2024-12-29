@@ -1,0 +1,30 @@
+<div class="dropdown">
+  <button
+    class="btn dropdown-toggle btn-user"
+    type="button"
+    data-bs-toggle="dropdown"
+  >
+    <i class="fas fa-user-circle"></i>
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-item">Iniciar Sesion</li>
+    <li class="dropdown-item">Registrarse</li>
+    <li class="dropdown-item">Tu cuenta</li>
+    <li class="dropdown-item">Cupones</li>
+  </ul>
+</div>
+<nav #headerMenu class="container rounded p-4 bg-black">
+  <div class="row align-items-center text-white fw-medium">
+    <img class="col-2" src="Captured Styles.jpg" alt=""/>
+    <div class="col"></div>
+    <span (click)="scrollTo('nosotros')" class="col">Nosotros</span>
+    <span (click)="scrollTo('categorias')" class="col">Categorias</span>
+    <span class="col">Productos</span>
+    <span class="col">Contactanos</span>
+    <span class="col"></span>
+    <span class="col cart-container justify-content-end">
+      <i class="las la-shopping-cart"></i>
+      <span class="counter-cart">0</span>
+    </span>
+  </div>
+</nav>

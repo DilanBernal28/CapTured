@@ -1,3 +1,4 @@
+
 /*=========================================
     CARRITO DE COMPRAS
 ==========================================*/
@@ -18,6 +19,8 @@ function addToCart(product) {
     }
     updateCartUI();
 }
+
+
 
 
 
@@ -65,7 +68,7 @@ function updateCartUI() {
         goShopBtn.style.display = 'none';
     }
     
-    // Event listeners para aumentar y disminuir cantidad como el video care chimba ese
+    // Event listeners para aumentar y disminuir cantidad como el video 
     document.querySelectorAll('.increase-quantity').forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
@@ -108,20 +111,22 @@ document.getElementById('go-shop-btn').addEventListener('click', () => {
 });
 
 // Event Listener para el botón "Agregar al Carrito"
-document.querySelectorAll('.hm-btn.btn-primary').forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault(); 
-
-        const productElement = button.closest('.product-item');
-        const product = {
-            id: productElement.querySelector('h3').innerText, 
-            name: productElement.querySelector('h3').innerText,
-            price: parseFloat(productElement.querySelector('.precio span').innerText.replace('$', '').replace('.', '')),
-            image: productElement.querySelector('img').src,
-        };
-        addToCart(product); // Llama la función para agregar el producto al carrito
+async function applyCartListeners(){
+    document.querySelectorAll('.hm-btn.btn-primary').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); 
+    
+            const productElement = button.closest('.product-item');
+            const product = {
+                id: productElement.querySelector('h3').innerText, 
+                name: productElement.querySelector('h3').innerText,
+                price: parseFloat(productElement.querySelector('.precio span').innerText.replace('$', '').replace('.', '')),
+                image: productElement.querySelector('img').src,
+            };
+            addToCart(product); // Llama la función para agregar el producto al carrito
+        });
     });
-});
+}
 
 // Mostrar el carrito al hacer clic en el icono del carrito
 document.querySelector('.hm-icon-cart').addEventListener('click', () => {
@@ -146,7 +151,7 @@ function showAlert(message) {
     alertMessage.style.display = 'block';
     setTimeout(() => {
         alertMessage.style.display = 'none';  // sin esta linea, la linea de abajo 4000 no funciona porque le tenia otras cosas
-    }, 5000); // Ocultar el mensaje después de 4 segundos o pues ya lo hablaremos xd 
+    }, 4000); // Ocultar el mensaje después de 4 segundos o pues ya lo hablaremos xd 
 }
 
 
@@ -163,11 +168,11 @@ document.getElementById('go-shop-btn').addEventListener('click', () => {
     document.querySelectorAll('.tabs-content').forEach(content => content.classList.remove('tab-active'));
 
     // muestra el contenido de las gorras
-    const gorrasContent = document.getElementById('gorras-content');
+    const gorrasContent = document.getElementById('Productos');
     gorrasContent.classList.add('tab-active');
 
     // desplaza la página hasta la sección de Productos populares
-    const productosPopularesSection = document.getElementById('productos-populares');
+    const productosPopularesSection = document.getElementById('Productos');
     productosPopularesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // ajustar el desplazamiento un poco hacia arriba, mueva el 25 y 500 segun su necidad porque creo que esa cosa con pantalla grande o chica se nos va a joder :V

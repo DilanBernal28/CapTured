@@ -1,0 +1,65 @@
+h1 {
+  margin-top: 5%;
+  position: relative;
+}
+h1 span {
+  position: absolute;
+  top: -550%;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.container {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.edicionLimitada {
+  background: url("/Edition One.jpeg");
+}
+.clasicas {
+  background: url("/Clásicas página.jpeg");
+}
+.exclusivas {
+  background: url("/Exclusivas página.jpeg");
+}
+.accesorios {
+  background: url("/Ski Mask Página.jpeg");
+}
+.col:hover {
+  background-size: 110%;
+  transition: 0.5s;
+  background-position: center;
+}
+.row {
+  gap: 0px;
+}
+.col {
+  filter: drop-shadow(0px 0px 2px #ffffff80);
+  overflow: hidden;
+  margin: 10px;
+  background-size: 100%;
+  transition: 0.3s;
+  background-position: center;
+  padding: 0 !important;
+  background-repeat: no-repeat;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+.col span {
+  font-size: 100%;
+  text-align: center;
+  padding: 14%;
+  bottom: -50%;
+  position: absolute;
+  width: 100%;
+  transition: bottom 0.5s ease-in-out;
+  color: white;
+  background-color: #00000080;
+}
+.col:hover {
+  span {
+    animation: slideToDown 0.5s ease-in ;
+    bottom: 0;
+  }
+}
