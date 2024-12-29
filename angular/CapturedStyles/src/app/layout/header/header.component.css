@@ -40,8 +40,6 @@ nav {
 
 .btn-user {
   position: fixed;
-  top: 5vh;
-  animation: slideToUp 0.5s ease-in;
   z-index: 20;
   left: 2%;
   background-color: white;

@@ -14,8 +14,10 @@ export class HeaderComponent {
   productsInCart: number = 0;
   animationApplied: boolean = false;
   breakpointScroll: number = 65;
+  buttonTopValue: string = '3vh';
 
   @ViewChild('headerMenu', { static: true }) headerMenu?: ElementRef;
+  @ViewChild('userButton', { static: true }) userButton?: ElementRef;
 
   constructor(public sharedService: SharedService) {
   }
@@ -33,11 +35,15 @@ export class HeaderComponent {
   onScroll(event: Event): void {
     const scrollPosition = window.pageYOffset;
 
-    if (this.headerMenu) {
+    if (this.headerMenu && this.userButton) {
       const headerElement = this.headerMenu.nativeElement;
+      const userButton = this.userButton.nativeElement;
       if (scrollPosition > this.breakpointScroll && !this.animationApplied) {
         headerElement.classList.remove('animation-down');
         headerElement.classList.add('header-fixed', 'animation-top');
+        userButton.classList.remove('animation-down');
+        userButton.classList.add('animation-top');
+        this.buttonTopValue  = '5vh';
         this.animationApplied = true;
         setTimeout(() => {
           headerElement.classList.remove('animation-top');
@@ -46,6 +52,9 @@ export class HeaderComponent {
       else if (scrollPosition <= this.breakpointScroll && this.animationApplied) {
         headerElement.classList.remove('animation-top', 'header-fixed');
         headerElement.classList.add('animation-down');
+        userButton.classList.remove('animation-top');
+        userButton.classList.add('animation-down');
+        this.buttonTopValue = '3vh';
         this.animationApplied = false;
         setTimeout(() => {
           headerElement.classList.remove('animation-down');
