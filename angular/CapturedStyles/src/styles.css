@@ -67,3 +67,14 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+::-webkit-scrollbar{
+  background-color: black;
+  width: 11px;
+  border-left: 2px solid white;
+}
+::-webkit-scrollbar-thumb{
+  background-color: whitesmoke;
+  border-radius: 7px;
+
+}
