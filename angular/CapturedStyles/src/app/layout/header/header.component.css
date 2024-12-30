@@ -18,12 +18,13 @@ nav {
 }
 
 .animation-top {
-  animation: slideToUp 0.6s ease-in;
+  animation: slideToUp 0.3s;
 }
 
 .animation-down {
-  animation: slideToDown 0.6s ease-in;
+  animation: slideToDown 0.3s;
 }
+
 
 .counter-cart {
   position: absolute;

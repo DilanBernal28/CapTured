@@ -2,7 +2,7 @@
   <button
     class="btn dropdown-toggle btn-user"
     type="button"
-    [style.top] ="buttonTopValue"
+    [style.top]="buttonTopValue"
     #userButton
     data-bs-toggle="dropdown"
   >
@@ -16,7 +16,12 @@
   </ul>
 </div>
 <nav #headerMenu class="container navbar navbar-expand-lg rounded p-4 bg-black">
-  <img class="navbar-brand ps-xl-5 ps-lg-4" src="Captured Styles.jpg" alt="" />
+  <img
+    #logo
+    class="navbar-brand py-0 ps-xl-5 ps-lg-4"
+    src="Captured Styles.jpg"
+    alt="Logo Captured Styles"
+  />
 
   <button
     class="navbar-toggler"
@@ -41,7 +46,7 @@
     <span class="col-lg nav-item">Contactanos</span>
     <span class="col cart-container justify-content-end">
       <i class="las la-shopping-cart"></i>
-      <span class="counter-cart"> {{productsInCart}}</span>
+      <span class="counter-cart"> {{ productsInCart }}</span>
     </span>
   </div>
 </nav>
