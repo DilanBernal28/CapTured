@@ -71,7 +71,7 @@ h1 {
 ::-webkit-scrollbar{
   background-color: black;
   width: 11px;
-  border-left: 2px solid white;
+  border-left: 0.1px solid white;
 }
 ::-webkit-scrollbar-thumb{
   background-color: whitesmoke;
