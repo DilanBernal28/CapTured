@@ -18,11 +18,11 @@ nav {
 }
 
 .animation-top {
-  animation: slideToUp 0.3s;
+  animation: slideToUp 0.6s;
 }
 
 .animation-down {
-  animation: slideToDown 0.3s;
+  animation: slideToDown 0.6s;
 }
 
 
@@ -53,7 +53,7 @@ nav {
 
 .header-fixed {
   position: fixed;
-  top: 2vh;
+  top: 15px;
   left: 0;
   right: 0;
   width: 100%;
