@@ -41,7 +41,7 @@ export class HeaderComponent {
   onScroll(event: Event): void {
     const scrollPosition = window.pageYOffset;
 
-    if (this.headerMenu && this.userButton && this.logo) 
+    if (this.headerMenu && this.userButton && this.logo) {
       const headerElement = this.headerMenu.nativeElement;
       const userButton = this.userButton.nativeElement;
       this.applyAnimatiion(scrollPosition, headerElement, userButton);
