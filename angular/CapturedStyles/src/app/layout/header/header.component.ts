@@ -26,12 +26,9 @@ export class HeaderComponent {
   }
 
   ngAfterViewInit() {
-    if (this.logo && this.userButton && this.headerMenu) {
+    if (typeof window !== 'undefined' && this.logo && this.userButton && this.headerMenu) {
       const scrollPosition = window.pageYOffset;
       const logoTop = this.logo.nativeElement.getBoundingClientRect().top;
-      // setTimeout(() => {
-      //   this.renderer.setStyle(this.userButton?.nativeElement, 'top', `${logoTop}px`);
-      // }, 900);
       if (scrollPosition > this.breakpointScroll) {
         this.applyAnimatiion(scrollPosition, this.headerMenu.nativeElement, this.userButton.nativeElement, logoTop);
       }
