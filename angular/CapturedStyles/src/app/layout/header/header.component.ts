@@ -26,6 +26,11 @@ export class HeaderComponent {
   }
 
   ngAfterViewInit() {
+    if(this.headerMenu && this.userButton) {
+      setInterval(() => {
+        this.applyAnimatiion(window.pageYOffset, this.headerMenu?.nativeElement, this.userButton?.nativeElement);
+      } , 1000);
+    }
   }
   addToCart() {
 
