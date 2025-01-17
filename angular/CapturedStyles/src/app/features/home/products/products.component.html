@@ -1,1 +1,13 @@
-<p>products works!</p>
+<h1>
+    Nuestros productos!
+</h1>
+<section class="container">
+    <div class="products" *ngFor="let product of products">
+        <div>
+            <img [src]="'/'+product.prodImg" alt="product.prodName">
+        </div>
+        <h3>
+            {{product.prodName}}
+        </h3>
+    </div>
+</section>
