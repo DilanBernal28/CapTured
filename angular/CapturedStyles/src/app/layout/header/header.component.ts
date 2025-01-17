@@ -1,6 +1,5 @@
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
-import { app } from '../../../../server';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +21,7 @@ export class HeaderComponent {
   @ViewChild('userButton', { static: true }) userButton?: ElementRef;
   @ViewChild('logo', { static: true }) logo?: ElementRef;
 
-  constructor(public sharedService: SharedService, private renderer: Renderer2) {
+  constructor(public sharedService: SharedService) {
   }
 
   ngAfterViewInit() {
