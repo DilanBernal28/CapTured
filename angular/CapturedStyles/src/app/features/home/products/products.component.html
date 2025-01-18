@@ -1,13 +1,27 @@
-<h1>
+<h1 class="submark mt-5">
+    <span id="productos"></span>
     Nuestros productos!
 </h1>
-<section class="container">
-    <div class="products" *ngFor="let product of products">
-        <div>
-            <img [src]="'/'+product.prodImg" alt="product.prodName">
+
+<app-categories></app-categories>
+
+<section class="container products-section mb-5">
+    <div class="row products-container">
+        <div class="product bg-white p-0 text-dark card" *ngFor="let product of products">
+            <div class="product-banner">
+                <span class="prodStatus rounded-3 p-1 px-2 fs-6 text-white bg-principal">
+                    {{product.prodActive}}
+                </span>
+                <img [src]="'/'+product.prodImg" class="rounded-top-2 card-img-top" width="100%" [alt]="'Image Of '+product.prodName">
+            </div>
+            <div class="card-body py-2 px-3">
+                <h3 class="fs-5 fw-bold m-0 card-text">
+                    {{product.prodName}}
+                </h3>
+                <span class="fw-semibold fs-5">{{product.prodPrecio | currency:'COP':'symbol-narrow' }}</span>
+            </div>
+            <button class="btn btn-primary rounded-5 m-2 py-2">Agregar al carrito</button>
+    
         </div>
-        <h3>
-            {{product.prodName}}
-        </h3>
     </div>
 </section>
