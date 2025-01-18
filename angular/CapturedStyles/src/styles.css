@@ -44,6 +44,17 @@ h1 {
   left: 46.5%;
 }
 
+.submark-lg::after{
+  content: "";
+  width: 15%;
+  position: absolute;
+  height: 4px;
+  background-color: var(--color-principal);
+  top: 130%;
+  border-radius: 20px;
+  left: 42.5%;
+}
+
 .btn{
   background-color: var(--color-principal);
   border-color: var(--color-principal);
