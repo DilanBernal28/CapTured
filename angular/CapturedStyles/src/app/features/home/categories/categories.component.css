@@ -13,6 +13,8 @@ img {
 .container {
   padding-left: 10%;
   padding-right: 10%;
+  margin-bottom: 10px;
+  border-bottom: 5px var(--color-primary-hover) dashed;
 }
 .todas{
   background: url("/Old Rock.jpeg");
