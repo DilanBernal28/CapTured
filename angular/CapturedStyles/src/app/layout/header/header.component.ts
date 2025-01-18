@@ -24,7 +24,7 @@ export class HeaderComponent {
   constructor(public sharedService: SharedService) {
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
 
     if(typeof window !== 'undefined' && this.headerMenu && this.userButton) {
         this.applyAnimatiion(window.pageYOffset, this.headerMenu?.nativeElement, this.userButton?.nativeElement);
