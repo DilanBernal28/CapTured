@@ -6,7 +6,7 @@ import { ProductsComponent } from "./products/products.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WeComponent, CategoriesComponent, ProductsComponent],
+  imports: [WeComponent, ProductsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
