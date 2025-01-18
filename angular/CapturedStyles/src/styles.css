@@ -44,6 +44,14 @@ h1 {
   left: 46.5%;
 }
 
+.btn{
+  background-color: var(--color-principal);
+  border-color: var(--color-principal);
+}
+
+.bg-principal{
+  background-color: var(--color-principal);
+}
 @keyframes slideToUp {
   0% {
     transform: translateY(-50%);
