@@ -17,8 +17,10 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'CapturedStyles';
   cartOpen:boolean =  false;
+  showHeader:boolean = true;
 
-  constructor(public shared:SharedService){ }
+  constructor(public shared:SharedService, private router: RouterOutlet){
+  }
 
   ngOnInit() { 
     this.shared.cartOpen$.subscribe((value) => {

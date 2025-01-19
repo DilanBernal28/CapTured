@@ -2,11 +2,12 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { share } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
