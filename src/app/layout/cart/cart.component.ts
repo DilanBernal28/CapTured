@@ -30,13 +30,27 @@ export class CartComponent {
 
   constructor(private shared: SharedService, private cartServ: CartService) { }
 
+  buttonClose():void{
+    var paid:boolean;
+    if(this.inCart == true){
+      paid = window.confirm(`Estas seguro que quieres pagar ${this.totalPrice}?`)
+    } else {
+      paid = false
+      this.closeCart();
+    }
+    if(paid == true){
+      this.clearCart();
+      alert('Gracias por tu compra perro malparido')
+    }
+  }
+
   closeCart():void {
     this.shared.setCartOpen(false);
   }
 
   updateTextButton():void {
-    if (this.cartItems.length === 0) this.textButton == 'Ir a comprar';
-    else if(this.cartItems.length >= 1) this.textButton == 'Comrar'
+    if (this.cartItems.length === 0) this.textButton = 'Ir a comprar';
+    else if(this.cartItems.length >= 1) this.textButton = 'Comprar'
   }
 
   decreaseProduct(item:IProduct){
