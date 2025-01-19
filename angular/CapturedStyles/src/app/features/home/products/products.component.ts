@@ -4,6 +4,7 @@ import { IProduct } from '../../../interfaces/product.interface';
 import { IApiResponse } from '../../../interfaces/apiResponse.interface';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from "../categories/categories.component";
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ import { CategoriesComponent } from "../categories/categories.component";
 export class ProductsComponent {
   products:IProduct[] = []
 
-  constructor(private prodServ:ProductService){}
+  constructor(private prodServ:ProductService, private cartServ:CartService){}
 
   ngOnInit(){
     try {
@@ -24,9 +25,12 @@ export class ProductsComponent {
           this.products = response.body
         }
       )
-      console.log(this.products)
     } catch (error) {
       
     }
+  }
+
+  addProductToCart(item:IProduct){
+    this.cartServ.addCartItem(item);
   }
 }

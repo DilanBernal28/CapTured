@@ -20,7 +20,7 @@
                 </h3>
                 <span class="fw-semibold fs-5">{{product.prodPrecio | currency:'COP':'symbol-narrow' }}</span>
             </div>
-            <button class="btn btn-primary rounded-5 m-2 py-2">Agregar al carrito</button>
+            <button class="btn btn-primary rounded-5 m-2 py-2" (click)="addProductToCart(product)">Agregar al carrito</button>
     
         </div>
     </div>

@@ -55,7 +55,7 @@ h1 {
   left: 42.5%;
 }
 
-.btn{
+.btn-primary{
   background-color: var(--color-principal);
   border-color: var(--color-principal);
 }

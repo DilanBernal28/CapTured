@@ -1,5 +1,7 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
+import { share } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,6 @@ import { SharedService } from '../../services/shared.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  cart = [];
-  totalAmmount: number = 0;
   productsInCart: number = 0;
   animationApplied: boolean = false;
   breakpointScroll: number = 65;
@@ -21,17 +21,24 @@ export class HeaderComponent {
   @ViewChild('userButton', { static: true }) userButton?: ElementRef;
   @ViewChild('logo', { static: true }) logo?: ElementRef;
 
-  constructor(public sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private cartServ:CartService) {
   }
 
   ngOnInit() {
-
+    this.cartServ.totalInCart$.subscribe((value) => {
+      this.productsInCart = value
+    })
     if(typeof window !== 'undefined' && this.headerMenu && this.userButton) {
         this.applyAnimatiion(window.pageYOffset, this.headerMenu?.nativeElement, this.userButton?.nativeElement);
     }
   }
   addToCart() {
 
+  }
+
+  interactWithCart(){
+    var cartOpen:boolean = !this.sharedService.getCartOpen();
+    this.sharedService.setCartOpen(cartOpen);
   }
 
   scrollTo(sectionId: string): void {

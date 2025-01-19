@@ -1,0 +1,30 @@
+<div class="cart-overlay">
+  <section class="cart-container">
+    <span class="close-cart" (click)="closeCart()">x</span>
+    <h2>Productos Seleccionados</h2>
+    <ul class="my-2" *ngIf="inCart">
+      <li class="cart-item" *ngFor="let item of cartItems">
+        <img [src]="'/'+item.prodImg" alt="" width="80px" height="100%"/>
+        <div class="item-info">
+          <h4>{{item.prodName}}</h4>
+          <p>
+            Cantidad:
+            <button class="btn btn-dark py-0" (click)="decreaseProduct(item)">-</button>
+            {{item.cantity}}
+            <button class="btn btn-dark py-0" (click)="addProduct(item)">+</button>
+          </p>
+          <p>
+            Precio:
+            <span>{{ item.prodPrecio| currency : "COP" : "symbol-narrow" }}</span>
+          </p>
+          <button class="btn btn-danger" (click)="deleteProduct(item)">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+    <p class="cart-total">
+      Total: <span> {{ totalPrice | currency : "COP" : "symbol-narrow" }}</span>
+    </p>
+    <button class="btn btn-primary">{{ textButton }}></button>
+    <button class="btn btn-danger my-2" (click)="clearCart()">Vaciar carrito</button>
+  </section>
+</div>

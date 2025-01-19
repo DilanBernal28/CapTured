@@ -44,7 +44,9 @@
     >
     <span class="col-lg nav-item">Productos</span>
     <span class="col-lg nav-item">Contactanos</span>
-    <span class="col cart-container justify-content-end">
+    <span class="col cart-container justify-content-end"
+    (click)="interactWithCart()"
+    >
       <i class="las la-shopping-cart"></i>
       <span class="counter-cart"> {{ productsInCart }}</span>
     </span>
