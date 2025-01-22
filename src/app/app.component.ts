@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./layout/header/header.component";
 import { FooterComponent } from "./layout/footer/footer.component";
 import { HttpClientModule } from '@angular/common/http';
@@ -19,12 +19,21 @@ export class AppComponent {
   cartOpen:boolean =  false;
   showHeader:boolean = true;
 
-  constructor(public shared:SharedService, private router: RouterOutlet){
+  constructor(public shared:SharedService, private router: Router){
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd){
+        const excludesRoutes = [/^\/login/, /^\/register/];
+        this.showHeader = !excludesRoutes.some((route) => route.test(event.url));
+      }
+    })
   }
 
   ngOnInit() { 
     this.shared.cartOpen$.subscribe((value) => {
       this.cartOpen = value;
+    })
+    this.shared.showHeader$.subscribe((value) => {
+      this.showHeader = value;
     })
   } 
   

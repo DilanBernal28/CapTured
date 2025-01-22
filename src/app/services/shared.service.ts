@@ -8,6 +8,8 @@ export class SharedService {
 
   private cartOpenSubject = new BehaviorSubject<boolean>(false);
   public cartOpen$ = this.cartOpenSubject.asObservable();
+  private showHeaderSubject = new BehaviorSubject<boolean>(true);
+  public showHeader$ = this.showHeaderSubject.asObservable();
 
   constructor() { }
 
@@ -16,5 +18,11 @@ export class SharedService {
   }
   public setCartOpen(cartOpen:boolean):void{
     this.cartOpenSubject.next(cartOpen);
+  }
+  public getShowHeader():boolean{
+    return this.showHeaderSubject.value;
+  }
+  public setShowHeader(showHeader:boolean):void{
+    this.showHeaderSubject.next(showHeader);
   }
 }
