@@ -9,7 +9,7 @@ import lombok.*;
 
 /**
  * The persistent class for the coupons database table.
- * 
+ *
  */
 @Entity
 @Table(name="coupons")
@@ -24,21 +24,21 @@ public class Coupon implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cup_id")
+	@Column(name="cup_id", nullable=false)
 	private int cupId;
 
-	@Column(name="cup_discount")
+	@Column(name="cup_discount", nullable = false)
 	private float cupDiscount;
 
-	@Column(name="cup_fire")
+	@Column(name="cup_fire", nullable = false)
 	private int cupFire;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name="cup_valid")
+	@Column(name="cup_valid", nullable = false)
 	private Valid cupValid;
 
 	@ManyToOne
-	@JoinColumn(name="id_user")
+	@JoinColumn(name="id_user", nullable = false)
 	private User user;
 
 	public enum Valid{

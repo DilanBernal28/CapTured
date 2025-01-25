@@ -12,7 +12,7 @@ import lombok.Data;
 
 /**
  * The persistent class for the orders database table.
- * 
+ *
  */
 @Entity
 @Data
@@ -23,20 +23,20 @@ public class Order implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ord_id")
+	@Column(name="ord_id", nullable=false)
 	private int ordId;
 
-	@Column(name="id_user")
+	@Column(name="id_user", nullable=false)
 	private int idUser;
 
-	@Column(name="ord_fechaPedido")
+	@Column(name="ord_fechaPedido", nullable = false)
 	private Date ordFechaPedido;
 
-	@Column(name="ord_precio")
+	@Column(name="ord_precio", nullable = false)
 	private double ordPrecio;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name="ord_status")
+	@Column(name="ord_status", nullable=false)
 	private Status ordStatus;
 
 	//bi-directional many-to-one association to Orderdetail

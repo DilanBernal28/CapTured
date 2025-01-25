@@ -31,44 +31,44 @@ public class User implements Serializable/* , UserDetails*/ {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_user")
+	@Column(name="id_user", nullable = false)
 	private int idUser;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="usr_active", nullable = false)
 	private Status usrActive;
 
-	@Column(name="usr_apellidos")
+	@Column(name="usr_apellidos", nullable = false)
 	private String usrApellidos;
 
-	@Column(name="usr_direccion")
+	@Column(name="usr_direccion", nullable = false)
 	private String usrDireccion;
-	
-	@Column(name="usr_email")
+
+	@Column(name="usr_email", nullable = false)
 	private String usrEmail;
 
-	@Column(name="usr_fechaInicio")
+	@Column(name="usr_fechaInicio", nullable = false)
 	private Timestamp usrFechaInicio;
 
-	@Column(name="usr_identificacion")
+	@Column(name="usr_identificacion", nullable = false)
 	private String usrIdentificacion;
 
-	@Column(name="usr_nombres")
+	@Column(name="usr_nombres", nullable = false)
 	private String usrNombres;
 
-	@Column(name="usr_password")
+	@Column(name="usr_password", nullable = false)
 	private String usrPassword;
 
-	@Column(name="usr_telefono")
+	@Column(name="usr_telefono", nullable = false)
 	private String usrTelefono;
 
 	@Column(name="usr_username", nullable = false)
 	private String usrUsername;
 
-	@Column(name="role")
+	@Column(name="role", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+
 	public enum Status {
 		activo,
 		suspendido,

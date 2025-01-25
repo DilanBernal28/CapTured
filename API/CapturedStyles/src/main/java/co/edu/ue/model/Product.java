@@ -15,7 +15,7 @@ import lombok.Setter;
 
 /**
  * The persistent class for the product database table.
- * 
+ *
  */
 @Entity
 @Getter
@@ -26,32 +26,32 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_producto")
+	@Column(name = "id_producto", nullable = false)
 	private int idProducto;
 
 	@Enumerated(EnumType.STRING)
 	@Setter
-	@Column(name = "prod_active")
+	@Column(name = "prod_active", nullable = false)
 	private Status prodActive;
 
 	@Setter
-	@Column(name = "prod_category")
+	@Column(name = "prod_category", nullable = false)
 	private String prodCategory;
 
 	@Setter
-	@Column(name = "prod_idHTML")
+	@Column(name = "prod_idHTML", nullable = false)
 	private String prodIdHTML;
 
 	@Setter
-	@Column(name = "prod_img")
+	@Column(name = "prod_img", nullable = false)
 	private String prodImg;
 
 	@Setter
-	@Column(name="prod_name")
+	@Column(name="prod_name", nullable = false)
 	private String prodName;
 
 	@Setter
-	@Column(name="prod_precio")
+	@Column(name="prod_precio", nullable = false)
 	private double prodPrecio;
 
 	//bi-directional many-to-one association to Orderdetail

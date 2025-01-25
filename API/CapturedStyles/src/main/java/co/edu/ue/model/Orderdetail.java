@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Orderdetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="ordp_cantidad")
+	@Column(name="ordp_cantidad", nullable=false)
 	private int ordpCantidad;
 
 	//bi-directional many-to-one association to Order
