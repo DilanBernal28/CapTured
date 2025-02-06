@@ -16,7 +16,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="orders")
+@Table(name="Orders")
 @NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +26,6 @@ public class Order implements Serializable {
 	@Column(name="ord_id", nullable=false)
 	private int ordId;
 
-	@Column(name="id_user", nullable=false)
-	private int idUser;
 
 	@Column(name="ord_fechaPedido", nullable = false)
 	private Date ordFechaPedido;
@@ -39,9 +37,12 @@ public class Order implements Serializable {
 	@Column(name="ord_status", nullable=false)
 	private Status ordStatus;
 
-	//bi-directional many-to-one association to Orderdetail
+
+  @Column(name="id_user", nullable=false)
+  private int idUser;
+
 	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+  @JsonManagedReference
 	private List<Orderdetail> orderdetails;
 
 	public Orderdetail addOrderdetail(Orderdetail orderdetail) {

@@ -1,20 +1,13 @@
 package co.edu.ue.Auth;
 
+import co.edu.ue.model.User;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
+@Getter
+@Setter
 @AllArgsConstructor
-@NoArgsConstructor
-public class RegisterRequest {
-  String username;
-  String password;
-  String firstnames;
-  String lastname;
-  String email;
-  String phone;
-  String document;
+public class RegisterRequest extends User {
+
 }
