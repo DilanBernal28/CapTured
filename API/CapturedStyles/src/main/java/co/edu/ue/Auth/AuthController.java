@@ -13,15 +13,9 @@ public class AuthController {
 
   private final IAuthService service;
 
-  @PostMapping(value = "ldkjsf")
-  public ResponseEntity<String> getAuth() {
-    return ResponseEntity.ok("puto");
-  }
-
   @PostMapping(value = "/login")
-  public ResponseEntity<String> login(@RequestBody LoginRequest request) {
-    return ResponseEntity.ok("hola");
-//    return ResponseEntity.ok(service.login(loginRequest));
+  public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+    return ResponseEntity.ok(service.login(request));
   }
 
   @PostMapping(value = "/register", produces = "application/json")
