@@ -17,7 +17,7 @@ import java.util.HashMap;
 @Service
 public class JwtService implements IJwtService {
 
-  private static final String SECRET_KEY = "Belate@momuchisimo050719<3:3";
+  private static final String SECRET_KEY = "Belateamomuchisimodemasiadonosabescuanto050719";
 
   @Override
   public String getToken(UserDetails user) {
@@ -25,14 +25,14 @@ public class JwtService implements IJwtService {
   }
 
   private String getToken(Map<String, Object> extraClaims, UserDetails user) {
-    return Jwts
-      .builder()
+    String token = Jwts.builder()
       .setClaims(extraClaims)
       .setSubject(user.getUsername())
       .setIssuedAt(new Date(System.currentTimeMillis()))
       .setExpiration(new Date(System.currentTimeMillis() + 1000*60*24))
-      .signWith(getKey(), SignatureAlgorithm.HS256)
+      .signWith(SignatureAlgorithm.HS256, getKey())
       .compact();
+    return token;
   }
 
   private Key getKey() {

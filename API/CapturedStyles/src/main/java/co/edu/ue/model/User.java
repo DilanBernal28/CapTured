@@ -3,6 +3,7 @@ package co.edu.ue.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -52,8 +53,8 @@ public class User implements Serializable, UserDetails {
 	@Column(name="usr_email", nullable = false)
 	private String usrEmail;
 
-	@Column(name="usr_fechaInicio", nullable = false)
-	private Timestamp usrFechaInicio;
+	@Column(name="usr_fechaInicio")
+	private Date usrFechaInicio;
 
 	@Column(name="usr_identificacion", nullable = false)
 	private String usrIdentificacion;

@@ -1,12 +1,14 @@
 package co.edu.ue.Auth;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
 
   private final IAuthService service;
@@ -22,8 +24,10 @@ public class AuthController {
 //    return ResponseEntity.ok(service.login(loginRequest));
   }
 
-  @PostMapping(value = "/register")
+  @PostMapping(value = "/register", produces = "application/json")
   public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-    return ResponseEntity.ok(service.register(request));
+    AuthResponse token = service.register(request);
+
+    return new ResponseEntity<>(token, HttpStatus.CREATED);
   }
 }

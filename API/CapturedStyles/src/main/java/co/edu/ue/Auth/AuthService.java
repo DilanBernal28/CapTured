@@ -1,10 +1,15 @@
 package co.edu.ue.Auth;
 
+import co.edu.ue.Jwt.JwtService;
 import co.edu.ue.dao.IUserJpa;
 import co.edu.ue.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import co.edu.ue.model.User;
+
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -13,6 +18,7 @@ public class AuthService implements IAuthService{
   private final IUserJpa repositoryService;
 
   private final IUserService userService;
+  private final JwtService jwtService;
 
   @Override
   public AuthResponse login(LoginRequest request) {
@@ -31,18 +37,30 @@ public class AuthService implements IAuthService{
       .usrDireccion(request.getUsrDireccion())
       .usrIdentificacion(request.getUsrIdentificacion())
       .role(request.getRole())
+      .usrActive(User.Status.activo)
+      .usrFechaInicio(Date.from(Instant.now()))
       .build();
+
+      userService.addUser(user);
+//    try{
+//      repositoryService.save(user);
+//    } catch (Exception e) {
+//      throw new RuntimeException(e);
+//    }
 
     try{
-      userService.addUser(user);
-      repositoryService.save(user);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
+      AuthResponse authResponse = AuthResponse.builder()
+        .token(jwtService.getToken(user))
+        .build();
+      return authResponse;
+    }catch(Exception e){
+      return AuthResponse.builder()
+        .token("malio sal")
+        .build();
     }
 
-
-    return AuthResponse.builder()
-      .token(null)
-      .build();
+//    return AuthResponse.builder()
+//      .token(jwtService.getToken(user))
+//      .build();
   }
 }
