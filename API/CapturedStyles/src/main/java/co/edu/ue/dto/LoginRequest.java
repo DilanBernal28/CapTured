@@ -1,4 +1,4 @@
-package co.edu.ue.Auth;
+package co.edu.ue.dto;
 
 import lombok.Builder;
 

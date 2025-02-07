@@ -1,6 +1,8 @@
 package co.edu.ue.Auth;
 
 import co.edu.ue.Jwt.JwtService;
+import co.edu.ue.dto.LoginRequest;
+import co.edu.ue.dto.RegisterRequest;
 import co.edu.ue.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

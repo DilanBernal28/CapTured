@@ -1,5 +1,7 @@
 package co.edu.ue.Auth;
 
+import co.edu.ue.dto.LoginRequest;
+import co.edu.ue.dto.RegisterRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
