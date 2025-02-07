@@ -6,9 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import co.edu.ue.model.User;
+import co.edu.ue.model.User.Status;
+import co.edu.ue.model.User.Role;
+import org.springframework.web.servlet.View;
 
 import java.time.Instant;
 import java.util.Date;
@@ -21,11 +25,20 @@ public class AuthService implements IAuthService{
   private final JwtService jwtService;
   private final PasswordEncoder passwordEncoder;
   private final AuthenticationManager authManager;
+  private final View error;
 
   @Override
   public AuthResponse login(LoginRequest request) {
-    authManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-    UserDetails user = userService.getByUsername(request.getUsername()).orElseThrow();
+    System.out.println("Contraseña en la DB" + userService.getByUsername(request.username()));
+    System.out.println("Contraseña que se escribio"+request.password());
+    UsernamePasswordAuthenticationToken usrAnPswr = new UsernamePasswordAuthenticationToken(request.username(), request.password());
+    System.out.println(usrAnPswr.toString());
+    try {
+      authManager.authenticate(usrAnPswr);
+    } catch (RuntimeException e){
+      throw new RuntimeException("Authentication failed", e);
+    }
+    UserDetails user = userService.getByUsername(request.username()).orElseThrow(() -> new UsernameNotFoundException(request.username()));
     String token = jwtService.getToken(user);
     return  AuthResponse.builder()
       .token(token)
@@ -34,23 +47,33 @@ public class AuthService implements IAuthService{
 
   @Override
   public AuthResponse register(RegisterRequest request) {
-    User user = User.builder()
-      .usrUsername(request.getUsrUsername())
-      .usrPassword(passwordEncoder.encode(request.getUsrPassword()))
-      .usrEmail(request.getUsrEmail())
-      .usrNombres(request.getUsrNombres())
-      .usrApellidos(request.getUsrApellidos())
-      .usrTelefono(request.getUsrTelefono())
-      .usrDireccion(request.getUsrDireccion())
-      .usrIdentificacion(request.getUsrIdentificacion())
-      .role(request.getRole())
-      .usrActive(User.Status.activo)
-      .usrFechaInicio(Date.from(Instant.now()))
-      .build();
+    if(!userService.existsByUsername(request.username())){
+      User user = User.builder()
+        .usrUsername(request.username())
+        .usrPassword(passwordEncoder.encode(request.password()))
+        .usrEmail(request.email())
+        .usrNombres(request.names())
+        .usrApellidos(request.lastname())
+        .usrTelefono(request.phone())
+        .usrDireccion(request.address())
+        .usrIdentificacion(request.document())
+        .role(Role.USER)
+        .usrActive(Status.activo)
+        .usrFechaInicio(Date.from(Instant.now()))
+        .build();
 
-    userService.addUser(user);
-    return AuthResponse.builder()
-      .token(jwtService.getToken(user))
-      .build();
+      AuthResponse token = AuthResponse.builder()
+        .token(jwtService.getToken(user))
+        .build();
+      if(token == null){
+        throw new RuntimeException("Error creating token");
+      }else {
+        userService.addUser(user);
+        return token;
+      }
+    }
+    else {
+      throw new RuntimeException("User already exists");
+    }
   }
 }

@@ -82,12 +82,12 @@ public class User implements Serializable, UserDetails {
 
   @Override
   public String getPassword() {
-    return "";
+    return this.usrPassword;
   }
 
   @Override
   public String getUsername() {
-    return "";
+    return this.usrUsername;
   }
 
   @Override

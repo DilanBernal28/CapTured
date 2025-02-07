@@ -30,7 +30,7 @@ public class JwtService implements IJwtService {
       .setClaims(extraClaims)
       .setSubject(user.getUsername())
       .setIssuedAt(new Date(System.currentTimeMillis()))
-      .setExpiration(new Date(System.currentTimeMillis() + 1000*60*24))
+      .setExpiration(new Date(System.currentTimeMillis() + 10000*60*24*2))
       .signWith(SignatureAlgorithm.HS256, getKey())
       .compact();
     return token;
