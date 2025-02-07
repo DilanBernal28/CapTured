@@ -22,7 +22,7 @@ import co.edu.ue.model.User;
 import co.edu.ue.model.User.Status;
 import co.edu.ue.service.IUserService;
 
-@RestController
+@RestController("clientUserController")
 @RequestMapping(value="api/usr")
 @CrossOrigin(origins = "*")
 public class UserController {

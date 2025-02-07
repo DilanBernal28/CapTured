@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController("adminUserController")
 @RequestMapping("/api/admin/usr")
 @CrossOrigin("*")
 public class UserController {
@@ -27,7 +27,7 @@ public class UserController {
     headers.add("otro_dat", "user");
     return new ResponseEntity<>(datos,headers,HttpStatus.OK);
   }
-  
+
   @GetMapping(value = "user/status/{status}")
   public ResponseEntity<List<User>> getAllStatus(@PathVariable("Status") User.Status status){
     if(status == User.Status.activo || status == User.Status.baneado || status == User.Status.suspendido) {
