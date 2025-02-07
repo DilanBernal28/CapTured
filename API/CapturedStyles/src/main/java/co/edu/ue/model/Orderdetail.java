@@ -18,18 +18,21 @@ import lombok.NoArgsConstructor;
 public class Orderdetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="ordp_cantidad")
+  @Id
+  @Column(name = "ordp_id", nullable = false)
+  private int ordpId;
+
+	@Column(name="ordp_cantidad", nullable=false)
 	private int ordpCantidad;
 
 	//bi-directional many-to-one association to Order
-	@Id
-	@ManyToOne
-	@JoinColumn(name="ord_id")
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ord_id", nullable=false)
 	@JsonBackReference
 	private Order order;
 
 	//bi-directional many-to-one association to Product
-	@ManyToOne
-	@JoinColumn(name="id_producto")
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="id_producto", nullable=false)
 	private Product product;
 }
