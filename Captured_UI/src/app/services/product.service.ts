@@ -8,7 +8,7 @@ import { IProduct } from '../interfaces/product.interface';
 })
 export class ProductService {
 
-  url:string = 'http://localhost:8080/prd/product';
+  url:string = 'https://7lvgszfn-8080.use2.devtunnels.ms/prd/product';
 
   constructor(private http: HttpClient) { }
 
