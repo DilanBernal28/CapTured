@@ -9,6 +9,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ import java.util.function.Function;
 @Service
 public class JwtService implements IJwtService {
 
-  private static final String SECRET_KEY = "Belateamomuchisimodemasiadonosabescuanto050719";
+  @Value("${jwt.secret}")
+  private String SECRET_KEY;
 
   @Override
   public String getToken(UserDetails user) {
@@ -31,7 +33,7 @@ public class JwtService implements IJwtService {
       .setSubject(user.getUsername())
       .setIssuedAt(new Date(System.currentTimeMillis()))
       .setExpiration(new Date(System.currentTimeMillis() + 10000*60*24*2))
-      .signWith(SignatureAlgorithm.HS256, getKey())
+      .signWith(getKey(), SignatureAlgorithm.HS256)
       .compact();
     return token;
   }

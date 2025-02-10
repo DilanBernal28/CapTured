@@ -22,11 +22,11 @@ export class ProductsComponent {
     try {
       this.prodServ.getProductos().subscribe(
         (response:IApiResponse<IProduct>) => {
-          this.products = response.body
+          this.products = response.body;
         }
       )
     } catch (error) {
-      
+      alert(error);
     }
   }
 

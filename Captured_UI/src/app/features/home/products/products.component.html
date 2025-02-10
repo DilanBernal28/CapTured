@@ -12,7 +12,7 @@
                 <span class="prodStatus rounded-3 p-1 px-2 fs-6 text-white bg-principal">
                     {{product.prodActive}}
                 </span>
-                <img [src]="'/'+product.prodImg" class="rounded-top-2 card-img-top" width="100%" [alt]="'Image Of '+product.prodName">
+                <img [src]="product.prodImg" [id]="product.prodIdHTML" class="rounded-top-2 card-img-top" width="100%" [alt]="'Image Of '+product.prodName">
             </div>
             <div class="card-body py-2 px-3">
                 <h3 class="fs-5 fw-bold m-0 card-text">

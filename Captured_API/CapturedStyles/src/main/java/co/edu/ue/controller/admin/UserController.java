@@ -24,7 +24,6 @@ public class UserController {
     List<User> datos = service.allUser();
     HttpHeaders headers = new HttpHeaders();
     headers.add("cantidad_datos", String.valueOf(datos.size()));
-    headers.add("otro_dat", "user");
     return new ResponseEntity<>(datos,headers,HttpStatus.OK);
   }
 

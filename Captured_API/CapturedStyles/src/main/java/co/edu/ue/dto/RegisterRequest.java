@@ -31,5 +31,7 @@ public record RegisterRequest(
   @Pattern(regexp = "(?=.*\\d).{7,}$",
            message = "The document need to have a number.")
   String document,
+  @NotNull(message = "The address can't be Empty.")
+  @Pattern(regexp = "([A-Za-z])")
   String address
 ) {}
