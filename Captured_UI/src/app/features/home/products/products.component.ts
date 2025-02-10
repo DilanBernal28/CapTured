@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product.interface';
-import { IApiResponse } from '../../../interfaces/apiResponse.interface';
+import { IApiResponse } from '../../../interfaces/api-response.interface';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from "../categories/categories.component";
 import { CartService } from '../../../services/cart.service';

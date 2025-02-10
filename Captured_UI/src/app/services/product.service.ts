@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, tap } from 'rxjs';
-import { IApiResponse} from '../interfaces/apiResponse.interface';
+import { IApiResponse} from '../interfaces/api-response.interface';
 import { IProduct } from '../interfaces/product.interface';
 @Injectable({
   providedIn: 'root'
