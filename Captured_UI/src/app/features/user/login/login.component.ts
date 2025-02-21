@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IApiResponse } from '../../../interfaces/api-response.interface';
 import { UserService } from '../../../services/user.service';
 import { UserLogin } from '../../../interfaces/user-login';
 import { Token } from '../../../interfaces/token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +15,17 @@ import { Token } from '../../../interfaces/token';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private fb: FormBuilder,
+  constructor(
     private userService: UserService,
+    private router: Router,
   ) {
   }
 
   loginForm = new FormGroup({
     username: new FormControl ('', [Validators.required, Validators.required]),
-    password: new FormControl ('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl ('', [Validators.required, Validators.minLength(6)]),
+    terms: new FormControl (false, Validators.requiredTrue),
+    rememberMe: new FormControl (false)
   });
 
   login(){
@@ -33,8 +37,17 @@ export class LoginComponent {
       this.userService.login(user).subscribe(
         (response: IApiResponse<Token>) => {
           if (response.status === 200) {
-            console.log('Login success');
-            alert( response.body.token)
+            switch (this.loginForm.value.rememberMe) {
+              case true:
+                this.userService.saveUserInLocalStorage(response.body, user.username);
+                break;
+              case false:
+                this.userService.saveUserInSessionStorage(response.body, user.username);
+                break;
+            }
+            this.userService.saveUserInLocalStorage(response.body, user.username);
+            alert(localStorage.getItem('user'));
+            this.goToHome();
           } else {
             console.log('Login failed');
           }
@@ -44,6 +57,14 @@ export class LoginComponent {
         }
       )
     }
+  }
+
+  goToHome(){
+    this.router.navigate(['home']);
+  }
+
+  goToTerms(){
+    this.router.navigate(['terms']);
   }
 
   ngOnInit(){

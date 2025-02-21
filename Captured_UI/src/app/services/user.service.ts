@@ -28,4 +28,18 @@ export class UserService {
       })
     )
   }
+  saveUserInLocalStorage(token: Token, username: string){
+    let user = {
+      token: token.token,
+      username: username
+    }
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+  saveUserInSessionStorage(token: Token, username: string){
+    let user = {
+      token: token.token,
+      username: username
+    }
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
 }

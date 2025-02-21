@@ -1,0 +1,13 @@
+.logo-container{
+    width: 30em;
+    margin: auto;
+    border: #ffffff 2px solid;
+    filter: drop-shadow(0px 0px 01px #ffffff);
+    border-radius: 3em;
+}
+.btn-primary{
+    width: 100%;
+}
+a{
+    cursor: pointer;
+}
