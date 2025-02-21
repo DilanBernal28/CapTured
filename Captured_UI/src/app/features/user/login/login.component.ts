@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { IApiResponse } from '../../../interfaces/api-response.interface';
 import { UserService } from '../../../services/user.service';
 import { UserLogin } from '../../../interfaces/user-login';
+import { Token } from '../../../interfaces/token';
 
 @Component({
   selector: 'app-login',
@@ -30,10 +31,10 @@ export class LoginComponent {
         password: this.loginForm.value.password
       }
       this.userService.login(user).subscribe(
-        (response) => {
+        (response: IApiResponse<Token>) => {
           if (response.status === 200) {
             console.log('Login success');
-            console.log(response.body);
+            alert( response.body.token)
           } else {
             console.log('Login failed');
           }
