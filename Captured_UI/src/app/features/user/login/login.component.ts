@@ -66,6 +66,10 @@ export class LoginComponent {
   goToTerms(){
     this.router.navigate(['terms']);
   }
+  
+  goToRegister(){
+    this.router.navigate(['register']);
+  }
 
   ngOnInit(){
   }
