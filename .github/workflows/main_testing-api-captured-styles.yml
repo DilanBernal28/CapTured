@@ -43,15 +43,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
   
       - name: Build with Maven
-        run: mvn clean install -X
+        run: mvn clean install
         working-directory: Captured_API/CapturedStyles
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'Captured_API/CapturedStyles/target/*.jar'
+      - name: List target directory contents
+        run: ls -l Captured_API/CapturedStyles/target/
       - name: List downloaded files
         run: ls -LR
 
