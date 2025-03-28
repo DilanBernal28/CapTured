@@ -47,12 +47,13 @@ jobs:
         working-directory: Captured_API/CapturedStyles
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
           path: '${{ github.workspace }}Captured_API/CapturedStyles/target/*.jar'
+      - name: List downloaded files
+        run: ls -l target/
 
   deploy:
     runs-on: ubuntu-latest
