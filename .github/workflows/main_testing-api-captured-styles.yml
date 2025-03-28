@@ -23,9 +23,25 @@ jobs:
         with:
           java-version: 21
           distribution: 'microsoft'
-      - name: Debug Maven Configuration
-        run: ls -la ~/.m2 && cat ~/.m2/settings.xml || echo "No settings.xml found"
-      
+
+      - name: Configure Maven settings.xml
+        run: |
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>github</id>
+                <username>${{ secrets.GITHUB_USERNAME }}</username>
+                <password>${{ secrets.GITHUB_TOKEN }}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
+        env:
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+  
       - name: Build with Maven
         run: mvn clean install -X
         working-directory: Captured_API/CapturedStyles
