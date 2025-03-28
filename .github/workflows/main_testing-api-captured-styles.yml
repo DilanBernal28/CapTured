@@ -53,7 +53,7 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}Captured_API/CapturedStyles/target/*.jar'
       - name: List downloaded files
-        run: ls -LR CapturedStyles/
+        run: ls -LR Captured_API/
 
   deploy:
     runs-on: ubuntu-latest
