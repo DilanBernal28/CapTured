@@ -23,7 +23,9 @@ jobs:
         with:
           java-version: 21
           distribution: 'microsoft'
-
+      - name: Debug Maven Configuration
+        run: ls -la ~/.m2 && cat ~/.m2/settings.xml || echo "No settings.xml found"
+      
       - name: Build with Maven
         run: mvn clean install -X
         working-directory: Captured_API/CapturedStyles
